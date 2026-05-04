@@ -73,3 +73,49 @@ If /network/reset is not available, implement one of:
   - reroute restores route to main gateway
 - Ensure NTP/time sync if latency telemetry is one-way or timestamp-based.
 - Persist Ryu logs and metrics JSON for post-run analysis.
+
+## 6. Pre-run checklist (avoid repeat failures)
+
+1. Ryu is running and reachable at the configured base_url.
+2. Mininet topology is up and switches are visible in /stats/switches.
+3. Startup setup succeeds with no routing/QoS failures.
+4. Latency endpoint returns real values for the configured pair.
+5. Traffic generators are active so telemetry changes under load.
+
+Quick checks:
+
+```
+curl http://<controller_ip>:8080/stats/switches
+curl http://<controller_ip>:8080/links/utilization
+curl http://<controller_ip>:8080/latency/<src>/<dst>
+```
+
+## 7. Known failure modes and fixes
+
+- DPID mismatch (decimal vs hex) causes 404 on conf/router/qos endpoints.
+  - Fix: keep decimal DPIDs in prod.json but normalize to 16-hex for Ryu
+    conf/router/qos endpoints. Verify /stats/switches uses decimals.
+
+- Latency returns null or Ryu logs show "connect: Network is unreachable".
+  - Fix: add default routes in Mininet host namespaces.
+    Example:
+    - mnexec -a <G6_D1_pid> ip route add default via 10.0.0.254
+    - mnexec -a <URLLC_pid> ip route add default via 20.0.0.254
+
+- Controller connection refused at 127.0.0.1:8080.
+  - Fix: use the controller IP reachable from your shell/container
+    (e.g., 172.17.0.2) and confirm ryu-manager is running.
+
+- /latency (no args) or /links returns 404.
+  - Fix: use /latency/{src}/{dst} and /links/utilization.
+
+- qos_rest_router KeyError (port_data missing).
+  - Fix: ensure Mininet is fully up before Ryu, or restart Ryu after Mininet.
+    Verify /stats/portdesc/<dpid> includes the referenced port numbers.
+
+- Mininet "py" uses Python 2.7, so Python 3 syntax fails.
+  - Fix: use execfile for scripts, e.g.:
+    py execfile('/root/traffic_runner.py', {'net': net})
+
+- PuTTY disconnect kills long training.
+  - Fix: run training inside tmux/screen or redirect logs with nohup.
