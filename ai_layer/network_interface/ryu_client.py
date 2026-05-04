@@ -73,6 +73,21 @@ class RyuClient:
                     f"{method} {url} returned {resp.status_code}: {resp.text}"
                 ) from exc
 
+    @staticmethod
+    def _normalize_dpid(dpid: str) -> str:
+        if dpid is None:
+            return ""
+        text = str(dpid).strip().lower()
+        if text.startswith("0x"):
+            value = int(text, 16)
+        elif len(text) == 16:
+            value = int(text, 16)
+        elif any(ch in text for ch in "abcdef"):
+            value = int(text, 16)
+        else:
+            value = int(text, 10)
+        return f"{value:016x}"
+
     # ------------------------------------------------------------------ #
     #  GET endpoints – telemetry
     # ------------------------------------------------------------------ #
@@ -124,23 +139,27 @@ class RyuClient:
             switch_id:  Switch identifier (e.g. '0000000000000001').
             qos_config: Dict with port_name, max_rate, etc.
         """
-        return self._request("POST", f"/qos/queue/{switch_id}", json_body=qos_config)
+        dpid = self._normalize_dpid(switch_id)
+        return self._request("POST", f"/qos/queue/{dpid}", json_body=qos_config)
 
     def post_qos_rule(self, switch_id: str, rule: dict) -> dict:
         """POST /qos/rules/{switch_id}  →  add a QoS routing rule."""
-        return self._request("POST", f"/qos/rules/{switch_id}", json_body=rule)
+        dpid = self._normalize_dpid(switch_id)
+        return self._request("POST", f"/qos/rules/{dpid}", json_body=rule)
 
     def set_switch_ovsdb_addr(self, switch_id: str, ovsdb_addr: str) -> dict:
         """PUT /v1.0/conf/switches/{switch_id}/ovsdb_addr."""
+        dpid = self._normalize_dpid(switch_id)
         return self._request(
             "PUT",
-            f"/v1.0/conf/switches/{switch_id}/ovsdb_addr",
+            f"/v1.0/conf/switches/{dpid}/ovsdb_addr",
             json_body=ovsdb_addr,
         )
 
     def post_router_entry(self, switch_id: str, payload: dict) -> dict:
         """POST /router/{switch_id} with address/route/default-gateway payload."""
-        return self._request("POST", f"/router/{switch_id}", json_body=payload)
+        dpid = self._normalize_dpid(switch_id)
+        return self._request("POST", f"/router/{dpid}", json_body=payload)
 
     def add_router_address(self, switch_id: str, address_cidr: str) -> dict:
         """POST router address assignment."""
