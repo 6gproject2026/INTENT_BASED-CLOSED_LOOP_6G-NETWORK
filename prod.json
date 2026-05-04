@@ -10,7 +10,7 @@
       "retry_delay_seconds": 1
     },
     "network": {
-      "switch_dpid": "0000000000000030",
+      "switch_dpid": "48",
       "main_link_capacity_mbps": 20.0,
       "backup_link_capacity_mbps": 10.0,
       "stabilization_delay_seconds": 1.0,
@@ -20,12 +20,12 @@
         "backup_path": ["core", "sp2", "lf1"]
       },
       "switch_dpids": {
-        "RAN": "0000000000000010",
-        "agg": "0000000000000020",
-        "core": "0000000000000030",
-        "sp1": "0000000000000040",
-        "sp2": "0000000000000041",
-        "lf1": "0000000000000050"
+        "RAN": "16",
+        "agg": "32",
+        "core": "48",
+        "sp1": "64",
+        "sp2": "65",
+        "lf1": "80"
       }
     },
     "monitoring": {
@@ -68,7 +68,7 @@
           "name": "update_queue",
           "description": "Adjust queue allocation on main core uplink",
           "target": {
-            "switch_dpid": "0000000000000030",
+            "switch_dpid": "48",
             "qos_config": {
               "port_name": "core-eth2",
               "type": "linux-htb",
@@ -94,7 +94,7 @@
           "name": "failover",
           "description": "Switch service route to backup path via spine2",
           "target": {
-            "switch_dpid": "0000000000000030",
+            "switch_dpid": "48",
             "route": {
               "destination": "20.0.0.0/24",
               "gateway": "14.0.0.2"
@@ -106,7 +106,7 @@
           "name": "reroute",
           "description": "Restore service route to main path via spine1",
           "target": {
-            "switch_dpid": "0000000000000030",
+            "switch_dpid": "48",
             "route": {
               "destination": "20.0.0.0/24",
               "gateway": "13.0.0.2"
@@ -122,20 +122,20 @@
       "ovsdb_addr": "tcp:127.0.0.1:6632",
       "routing": {
         "node_order": [
-          "0000000000000010",
-          "0000000000000020",
-          "0000000000000030",
-          "0000000000000040",
-          "0000000000000041",
-          "0000000000000050"
+          "16",
+          "32",
+          "48",
+          "64",
+          "65",
+          "80"
         ],
         "nodes": {
-          "0000000000000010": {
+          "16": {
             "addresses": ["10.0.0.254/24", "17.0.0.254/24", "11.0.0.1/24"],
             "routes": [],
             "default_gateway": "11.0.0.2"
           },
-          "0000000000000020": {
+          "32": {
             "addresses": ["11.0.0.2/24", "12.0.0.1/24"],
             "routes": [
               {
@@ -149,7 +149,7 @@
             ],
             "default_gateway": "12.0.0.2"
           },
-          "0000000000000030": {
+          "48": {
             "addresses": ["12.0.0.2/24", "13.0.0.1/24", "14.0.0.1/24"],
             "routes": [
               {
@@ -167,7 +167,7 @@
             ],
             "default_gateway": "14.0.0.2"
           },
-          "0000000000000040": {
+          "64": {
             "addresses": ["13.0.0.2/24", "15.0.0.1/24"],
             "routes": [
               {
@@ -177,7 +177,7 @@
             ],
             "default_gateway": "13.0.0.1"
           },
-          "0000000000000041": {
+          "65": {
             "addresses": ["14.0.0.2/24", "16.0.0.1/24"],
             "routes": [
               {
@@ -191,7 +191,7 @@
             ],
             "default_gateway": "14.0.0.1"
           },
-          "0000000000000050": {
+          "80": {
             "addresses": ["15.0.0.2/24", "16.0.0.2/24", "20.0.0.254/24", "18.0.0.254/24"],
             "routes": [
               {
@@ -206,7 +206,7 @@
       "qos_baseline": {
         "rules": [
           {
-            "switch_dpid": "0000000000000020",
+            "switch_dpid": "32",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -220,7 +220,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000020",
+            "switch_dpid": "32",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -234,7 +234,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000020",
+            "switch_dpid": "32",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -248,7 +248,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000030",
+            "switch_dpid": "48",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -260,7 +260,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000030",
+            "switch_dpid": "48",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -272,7 +272,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000030",
+            "switch_dpid": "48",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -284,7 +284,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000040",
+            "switch_dpid": "64",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -296,7 +296,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000040",
+            "switch_dpid": "64",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -308,7 +308,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000040",
+            "switch_dpid": "64",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -320,7 +320,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000041",
+            "switch_dpid": "65",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -332,7 +332,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000041",
+            "switch_dpid": "65",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -344,7 +344,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000041",
+            "switch_dpid": "65",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -356,7 +356,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000050",
+            "switch_dpid": "80",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -370,7 +370,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000050",
+            "switch_dpid": "80",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -384,7 +384,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000050",
+            "switch_dpid": "80",
             "rule": {
               "match": {
                 "eth_type": 2048,
@@ -400,7 +400,7 @@
         ],
         "queues": [
           {
-            "switch_dpid": "0000000000000030",
+            "switch_dpid": "48",
             "qos_config": {
               "port_name": "core-eth2",
               "type": "linux-htb",
@@ -422,7 +422,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000030",
+            "switch_dpid": "48",
             "qos_config": {
               "port_name": "core-eth3",
               "type": "linux-htb",
@@ -444,7 +444,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000040",
+            "switch_dpid": "64",
             "qos_config": {
               "port_name": "sp1-eth1",
               "type": "linux-htb",
@@ -466,7 +466,7 @@
             }
           },
           {
-            "switch_dpid": "0000000000000041",
+            "switch_dpid": "65",
             "qos_config": {
               "port_name": "sp2-eth1",
               "type": "linux-htb",
