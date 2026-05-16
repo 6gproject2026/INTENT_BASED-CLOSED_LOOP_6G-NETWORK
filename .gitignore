@@ -29,7 +29,7 @@ Thumbs.db
 *.log
 
 # RL outputs and artifacts
-/models/*.pth
+/Old_models/*.pth
 /checkpoints/
 /runs/
 /logs/*.json
