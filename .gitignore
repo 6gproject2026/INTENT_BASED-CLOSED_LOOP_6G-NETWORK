@@ -14,7 +14,8 @@ dist/
 *.egg-info/
 .eggs/
 .claude/
-
+CLAUDE.md
+AGENT.md
 # Tooling caches
 .pytest_cache/
 .mypy_cache/
