@@ -24,9 +24,9 @@ def _get_kill_fn():
 def start_traffic(
     net,
     duration_s=1800,
-    urllc_bw="10M",
-    embb_bw="10M",
-    mmtc_bw="10M",
+    urllc_bw="6M",
+    embb_bw="5M",
+    mmtc_bw="3M",
 ):
     """Start UDP traffic flows for the full training window."""
     def run_bg(host, command):
@@ -88,10 +88,16 @@ def traffic_status(net, tail_lines=3):
             print("%s log tail:\n%s" % (name, tail))
 
 
+# Profiles are sized against a 20 Mbps main path / 10 Mbps backup (30 Mbps
+# aggregate). Each profile is feasible so the agent's actions can actually
+# change the state:
+#   light    (10M) -> fits comfortably on the main path
+#   moderate (17M) -> tight on main path, queue management matters
+#   heavy    (22M) -> exceeds the 20M main path, failover to backup helps
 DEFAULT_PLAN = [
-    {"duration_s": 900, "urllc_bw": "30M", "embb_bw": "10M", "mmtc_bw": "10M"},
-    {"duration_s": 900, "urllc_bw": "15M", "embb_bw": "20M", "mmtc_bw": "5M"},
-    {"duration_s": 900, "urllc_bw": "5M", "embb_bw": "30M", "mmtc_bw": "20M"},
+    {"duration_s": 900, "urllc_bw": "4M", "embb_bw": "4M", "mmtc_bw": "2M"},
+    {"duration_s": 900, "urllc_bw": "8M", "embb_bw": "6M", "mmtc_bw": "3M"},
+    {"duration_s": 900, "urllc_bw": "10M", "embb_bw": "8M", "mmtc_bw": "4M"},
 ]
 
 _traffic_plan_thread = None
@@ -139,9 +145,9 @@ def start_traffic_plan(net, plan=None, loop=True):
         default_plan = DEFAULT_PLAN
     except NameError:
         default_plan = [
-            {"duration_s": 900, "urllc_bw": "30M", "embb_bw": "10M", "mmtc_bw": "10M"},
-            {"duration_s": 900, "urllc_bw": "15M", "embb_bw": "20M", "mmtc_bw": "5M"},
-            {"duration_s": 900, "urllc_bw": "5M", "embb_bw": "30M", "mmtc_bw": "20M"},
+            {"duration_s": 900, "urllc_bw": "4M", "embb_bw": "4M", "mmtc_bw": "2M"},
+            {"duration_s": 900, "urllc_bw": "8M", "embb_bw": "6M", "mmtc_bw": "3M"},
+            {"duration_s": 900, "urllc_bw": "10M", "embb_bw": "8M", "mmtc_bw": "4M"},
         ]
 
     plan = plan if plan is not None else default_plan
