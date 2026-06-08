@@ -115,7 +115,7 @@ class IntentTranslator:
         queue_id = SLICE_QUEUE_MAP[intent.slice]
         rate_bps = int(intent.limit_mbps * 1_000_000)
 
-        self.ryu.apply_qos(dpid, {"queue_id": queue_id, "max_rate": rate_bps})
+        self.ryu.apply_qos(dpid, {"queue_id": queue_id, "max_rate": str(rate_bps)})
         self.ryu.post_qos_rule(dpid, {"slice": intent.slice, "queue_id": queue_id})
 
         return {"dpid": dpid, "queue_id": queue_id, "max_rate_bps": rate_bps}
@@ -137,7 +137,7 @@ class IntentTranslator:
 
         applied = []
         for slice_name, queue_id in SLICE_QUEUE_MAP.items():
-            share = int(PRIORITY_BASE_RATE_BPS * weight[slice_name] / total)
+            share = str(int(PRIORITY_BASE_RATE_BPS * weight[slice_name] / total))
             qos = {"queue_id": queue_id}
             if slice_name == target:
                 qos["min_rate"] = share   # guarantee the boosted slice a floor
