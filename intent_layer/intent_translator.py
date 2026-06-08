@@ -24,6 +24,14 @@ SLICE_QUEUE_MAP: dict[str, int] = {
     "mMTC":  3,   # lowest priority queue
 }
 
+# DSCP marks used to classify each slice's traffic onto its queue.
+# Mirrors the prod.json qos_baseline rules (EF=46, AF41=34, AF11=10).
+SLICE_DSCP_MAP: dict[str, str] = {
+    "URLLC": "46",
+    "eMBB":  "34",
+    "mMTC":  "10",
+}
+
 # Default DPID if none extracted from intent
 DEFAULT_DPID = "0x30"
 
@@ -116,7 +124,10 @@ class IntentTranslator:
         rate_bps = int(intent.limit_mbps * 1_000_000)
 
         self.ryu.apply_qos(dpid, {"queue_id": queue_id, "max_rate": str(rate_bps)})
-        self.ryu.post_qos_rule(dpid, {"slice": intent.slice, "queue_id": queue_id})
+        self.ryu.post_qos_rule(dpid, {
+            "match": {"eth_type": 2048, "ip_dscp": SLICE_DSCP_MAP[intent.slice]},
+            "actions": {"queue": str(queue_id)},
+        })
 
         return {"dpid": dpid, "queue_id": queue_id, "max_rate_bps": rate_bps}
 
