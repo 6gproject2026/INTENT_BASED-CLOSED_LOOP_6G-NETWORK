@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 
+graphify-out/
+
 # Virtual environments
 venv/
 .venv/
@@ -15,7 +17,7 @@ dist/
 .eggs/
 .claude/
 CLAUDE.md
-AGENT.md
+AGENTS.md
 # Tooling caches
 .pytest_cache/
 .mypy_cache/
