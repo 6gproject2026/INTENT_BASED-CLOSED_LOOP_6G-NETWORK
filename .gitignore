@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 
+graphify-out/
+
 # Virtual environments
 venv/
 .venv/
@@ -13,7 +15,9 @@ build/
 dist/
 *.egg-info/
 .eggs/
-
+.claude/
+CLAUDE.md
+AGENTS.md
 # Tooling caches
 .pytest_cache/
 .mypy_cache/

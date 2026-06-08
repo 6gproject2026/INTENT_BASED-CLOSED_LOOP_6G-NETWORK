@@ -491,7 +491,7 @@
       }
     },
     "episode": {
-      "max_steps": 15,
+      "max_steps": 50,
       "timeout_seconds": 300,
       "call_network_reset_on_reset": false
     }
@@ -510,13 +510,13 @@
       "gamma": 0.99,
       "epsilon_start": 1.0,
       "epsilon_end": 0.01,
-      "epsilon_decay": 0.999,
+      "epsilon_decay": 0.9996,
       "batch_size": 64,
       "target_update_frequency": 100
     },
     "replay_buffer": {
       "capacity": 10000,
-      "min_size_for_training": 1000
+      "min_size_for_training": 200
     },
     "optimizer": {
       "type": "Adam",
@@ -525,7 +525,7 @@
     "loss_function": "MSE"
   },
   "training": {
-    "num_episodes": 100,
+    "num_episodes": 300,
     "warmup_steps": 200,
     "evaluation_frequency": 10,
     "save_frequency": 25,

@@ -1,95 +1,109 @@
 # CLAUDE.md
 
-This file provides guidance when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
-
-Reinforcement Learning system for SDN traffic optimization.
-A DQN agent learns routing/QoS actions by communicating with a real Ryu SDN controller through REST APIs.
-
-## Development Commands
+## Commands
 
 ```bash
-# Install dependencies
+# Install dependencies (use the venv in ./venv)
 pip install -r requirements.txt
 
-# One-time startup routing + baseline QoS setup
+# One-time network setup (routing + baseline QoS): run before any training
 python setup_network.py --config prod.json
+python setup_network.py --config prod.json --dry-run          # preview API calls only
+python setup_network.py --config prod.json --continue-on-error
 
-# Run live integration smoke test (requires Ryu + network running)
+# Smoke test — hits Ryu telemetry, action, and env APIs; runs 3 env steps
 python clint_test.py
 
-# Train DQN on live environment
+# Train
 python train.py --config prod.json --model-path models/dqn_model_live.pth
+python train.py --config prod.json --skip-setup --seed 42    # skip startup setup
 
-# Evaluate trained policy and baselines
+# Evaluate
 python evaluate.py --config prod.json --model-path models/dqn_model_live.pth
+python evaluate.py --config prod.json --skip-setup --metrics-path logs/eval.json
+
+# Run reward-alignment batch experiment (multi-seed train+eval)
+python run_reward_alignment_experiment.py   # writes configs/reward_alignment_exp.json
+
+# Traffic generation (run inside Mininet)
+python traffic_runner.py
+```
+
+Quick controller health checks:
+```bash
+curl http://<controller_ip>:8080/stats/switches
+curl http://<controller_ip>:8080/links/utilization
+curl http://<controller_ip>:8080/latency/<src>/<dst>
 ```
 
 ## Architecture
 
+This project trains a DQN agent to optimize a live SDN network by issuing control commands to a Ryu controller over its REST API. There is **no simulation or mock mode** — every run requires a reachable Ryu controller.
+
+### Two-phase execution contract
+
+**Startup setup (one-time):** `NetworkInitializer` walks `prod.json:environment.startup_setup` and makes Ryu API calls to configure routing (addresses, static routes, default gateways on every switch) and baseline QoS queues/rules. Controlled by `environment.startup_setup.enabled` and the `--skip-setup` flag.
+
+**Runtime (per RL step):** `SDNEnv.step()` executes one of 4 optimization-only actions, waits `stabilization_delay_seconds`, polls telemetry, builds a 6D state, and computes a reward.
+
+### Data flow per step
+
 ```
-ai_layer/
-├── network_interface/          # REST communication with Ryu controller
-│   ├── ryu_client.py           # HTTP client with retry logic
-│   ├── telemetry_parser.py     # JSON -> 6D operational state conversion
-│   └── action_translator.py    # Runtime action ID -> REST API call
-├── network_setup/
-│   └── network_initializer.py  # One-time routing + baseline QoS startup setup
-├── environments/               # Gymnasium environments
-│   └── sdn_env.py              # Live environment (requires Ryu)
-├── agent/
-│   ├── dqn_agent.py            # DQN implementation
-│   └── replay_buffer.py        # Experience replay buffer
-├── models/
-│   └── q_network.py            # Q-network MLP
-├── training/
-│   └── trainer.py              # Optional training wrapper
-└── utils/
-    ├── reward.py               # Operational QoS reward for 6D state
-    └── config.py               # Config utilities
+ActionTranslator.execute(action_id)
+    → RyuClient POST /qos/queue | /router | (no-op)
+    → time.sleep(stabilization_delay)
+    → RyuClient GET /links/utilization + GET /latency/{src}/{dst}
+    → TelemetryParser.build_state(...)   # → np.float32[6]
+    → compute_reward_details(state, config)
+    → SDNEnv returns (state, reward, terminated, truncated, info)
 ```
 
-## State and Action Space
+### Key files
 
-State is a normalized 6D vector:
-[latency, packet_loss, throughput, main_link_util, backup_link_util, failover_active]
+| File | Role |
+|------|------|
+| `prod.json` | Single source of truth: Ryu URL, DPIDs, state/action dims, hyperparameters, reward weights, startup setup payloads |
+| `ai_layer/environments/sdn_env.py` | Gymnasium `Env` wrapping live telemetry and actions |
+| `ai_layer/network_interface/ryu_client.py` | HTTP client with retry; normalizes decimal DPIDs to 16-hex for conf/router/qos endpoints |
+| `ai_layer/network_interface/telemetry_parser.py` | Converts raw JSON into 6D normalized state |
+| `ai_layer/network_interface/action_translator.py` | Maps action IDs to `RyuClient` calls; returns `ActionResult` |
+| `ai_layer/network_setup/network_initializer.py` | One-time routing + QoS baseline setup |
+| `ai_layer/agent/dqn_agent.py` | DQN with target network, epsilon-greedy, gradient clipping |
+| `ai_layer/utils/reward.py` | Decomposed operational reward (latency/loss penalties, throughput bonus, congestion threshold) |
 
-Actions are 4 discrete runtime controls:
+### State and action spaces
 
-| ID | Name | Effect |
-|----|------|--------|
-| 0 | do_nothing | No changes |
-| 1 | update_queue | Apply queue profile update on configured switch/port |
-| 2 | failover | Move selected route(s) to backup path |
-| 3 | reroute | Restore selected route(s) to main path |
+**State** (6D float32, all in [0, 1]):
+`[latency_norm, packet_loss_norm, throughput_norm, main_link_util, backup_link_util, failover_active]`
 
-Startup setup (routing addresses/routes/default gateways + baseline QoS rules/queues)
-is executed separately via `setup_network.py` or through train/evaluate setup flags.
+**Actions** (Discrete 4):
+- `0` do_nothing — no API call
+- `1` update_queue — POST `/qos/queue/{dpid}`
+- `2` failover — POST `/router/{dpid}` switching route to backup path, sets `failover_active=True`
+- `3` reroute — POST `/router/{dpid}` restoring main path, sets `failover_active=False`
 
-## Configuration
+Episodes are **truncated** at `environment.episode.max_steps`; `terminated` is always `False`.
 
-All settings are driven from prod.json.
-Important sections:
+### DPID handling
 
-- environment.ryu_controller: base URL, retries, timeout
-- environment.network: DPID set and main/backup capacities
-- environment.monitoring: telemetry pairs and normalization bands
-- environment.startup_setup: one-time routing + baseline QoS orchestration
-- environment.action_space: runtime optimization actions
-- agent: network dimensions and DQN hyperparameters
-- training and evaluation: episode counts, checkpointing, baselines, setup toggles
+`prod.json` stores DPIDs as decimal strings (e.g. `"48"`). `RyuClient._normalize_dpid()` converts to 16-character zero-padded hex before calling conf/router/qos endpoints. Telemetry endpoints (`/stats/switches`, `/stats/port/`) use raw decimal. Do not change DPIDs to hex in `prod.json`.
 
-## Integration Focus
+### Known failure modes
 
-Before long training runs, verify:
+- **Controller unreachable**: update `environment.ryu_controller.base_url` in `prod.json` (default `http://172.17.0.2:8080`).
+- **Latency returns null**: add default routes in Mininet host namespaces (`mnexec -a <pid> ip route add default via <gw>`).
+- **qos_rest_router KeyError**: Mininet was started after Ryu — restart Ryu after Mininet is fully up.
+- **Long training killed on disconnect**: run inside `tmux`/`screen` or use `nohup`.
+- **Mininet `py` commands**: Mininet uses Python 2.7; use `execfile('/root/script.py', {'net': net})` instead of `exec(open(...))`.
 
-1. Startup setup payloads match controller expectations for /v1.0/conf/switches and /router.
-2. Runtime action payloads for update_queue/failover/reroute match current topology.
-3. /links/utilization and /latency responses include fields used by telemetry_parser.
-4. switch_dpid values and port names in prod.json match Mininet topology.
-5. Traffic generation is active so rewards contain meaningful signal.
+## graphify
 
-Optional reset behavior:
-- By default, env reset does not call /network/reset.
-- Enable environment.episode.call_network_reset_on_reset if reset endpoint is available.
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).

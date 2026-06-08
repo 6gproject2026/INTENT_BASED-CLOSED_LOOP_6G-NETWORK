@@ -1,12 +1,12 @@
-# AI Layer Developer Guide
+# AI Layer Specifications
 
-**Closed-Loop Intent-Based Network System**
+**Project: Closed-Loop Intent-Based Network System**
 
-*Developer documentation for the Reinforcement Learning traffic optimization component.*
+This doc outlines the architecture and design logic for our Reinforcement Learning (RL) traffic optimization engine.
 
 ---
 
-## 1. Project Overview
+## 1. Overview
 
 ### 1.1 Purpose
 
@@ -46,17 +46,19 @@ The AI Layer implements a Deep Q-Network (DQN) agent that optimizes SDN traffic 
 
 ### 1.3 AI Layer Responsibilities
 
-| Responsibility | Description |
+The agent handles the following workflows:
+
+| Duty | Description |
 |----------------|-------------|
-| Telemetry Parsing | Receive and parse JSON responses from Ryu REST API |
-| State Construction | Build normalized 5-dimensional state vector |
-| RL Decision Making | Select actions using DQN policy (ε-greedy during training) |
-| Action Translation | Convert action IDs to Ryu REST API calls |
-| Training & Evaluation | Manage episode lifecycle, replay buffer, model checkpoints |
+| Telemetry Parsing | Ingests and processes JSON stats from Ryu's REST API |
+| State Construction | Converts raw data into our normalized 6-dimensional state vector |
+| RL Decision Making | Picks actions using the DQN policy |
+| Action Translation | Translates the numerical action into Ryu REST API calls |
+| Training & Eval | Handles the episode loops, replay buffer writes, and weight updates |
 
 ### 1.4 Out of Scope
 
-The AI Layer does **NOT** handle:
+To keep separation of concerns, the AI Layer does **not** touch:
 - Direct OpenFlow switch communication
 - Ryu controller implementation or configuration
 - Mininet topology management
@@ -182,15 +184,16 @@ class ActionTranslator:
 
 ## 5. State Space Definition
 
-### 5.1 Features (5-dimensional)
+### 5.1 Features (6-dimensional)
 
 | Index | Feature | Description | Normalization |
 |-------|---------|-------------|---------------|
-| 0 | `link1_utilization` | Link 1 bandwidth usage | min-max [0,1] |
-| 1 | `link2_utilization` | Link 2 bandwidth usage | min-max [0,1] |
-| 2 | `link3_utilization` | Link 3 bandwidth usage | min-max [0,1] |
-| 3 | `packet_loss_rate` | Drop rate | min-max [0,1] |
-| 4 | `total_traffic_load` | Aggregate traffic | min-max [0,1] |
+| 0 | `latency` | Observed latency on primary test pair | min-max [10ms, 80ms] → [0,1] |
+| 1 | `packet_loss` | Observed packet loss percentage | min-max [0%, 5%] → [0,1] |
+| 2 | `throughput` | Total traffic across active links | min-max relative to total capacity |
+| 3 | `main_link_util` | Utilization of the primary 20Mbps path | ratio [0,1] |
+| 4 | `backup_link_util` | Utilization of the secondary 10Mbps path | ratio [0,1] |
+| 5 | `failover_active` | Boolean flag indicating if failover is triggered | discrete {0.0, 1.0} |
 
 ### 5.2 Normalization Method
 
@@ -302,7 +305,14 @@ def compute_reward(state: np.ndarray) -> float:
 ### 8.1 Neural Network
 
 ```
-Input Layer:    5 neurons (state dimension)
+### 6.1 Discrete Actions
+
+| Action ID | Network Effect | Description |
+|-----------|----------------|-------------|
+| `0` | `do_nothing` | Stable state, keep current routing and queue settings |
+| `1` | `update_queue` | Adjust QoS queue bandwidth allocations on main core uplink to prioritize critical traffic |
+| `2` | `failover` | Switch service route to backup path (spine2) when primary is congested |
+| `3` | `reroute` | Restore service route back to main path (spine1) when conditions normalize | Layer:    5 neurons (state dimension)
 Hidden Layer 1: 64 neurons, ReLU activation
 Hidden Layer 2: 64 neurons, ReLU activation
 Output Layer:   5 neurons (action Q-values)

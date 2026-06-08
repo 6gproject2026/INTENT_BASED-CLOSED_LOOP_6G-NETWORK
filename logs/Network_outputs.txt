@@ -1,0 +1,1349 @@
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ python3 setup_network.py --config prod.json
+Network setup summary:
+{
+  "enabled": true,
+  "dry_run": false,
+  "routing_steps": 37,
+  "qos_steps": 19,
+  "successes": 56,
+  "failures": 0,
+  "errors": []
+}
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ # Export the correct base URL
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ export RYU_BASE=http://172.17.0.2:8080
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ # 1. Check if ports are discovered (stops KeyError)
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ curl -s $RYU_BASE/stats/portdesc/48
+{"48": [{"hw_addr": "d6:b7:0c:5a:21:48", "curr": 0, "supported": 0, "max_speed": 0, "advertised": 0, "peer": 0, "port_no": "LOCAL", "curr_speed": 0, "name": "core", "state": 1, "config": 1}, {"hw_addr": "ba:99:dc:da:d3:50", "curr": 2112, "supported": 0, "max_speed": 0, "advertised": 0, "peer": 0, "port_no": 1, "curr_speed": 10000000, "name": "core-eth1", "state": 0, "config": 0}, {"hw_addr": "6e:7a:89:16:53:50", "curr": 2112, "supported": 0, "max_speed": 0, "advertised": 0, "peer": 0, "port_no": 2, "curr_speed": 10000000, "name": "core-eth2", "state": 0, "config": 0}, {"hw_addr": "7a:a1:e5:e2:e3:04", "curr": 2112, "supported": 0, "max_speed": 0, "advertised": 0, "peer": 0, "port_no": 3, "curr_speed": 10000000, "name": "core-eth3", "state": 0, "config": 0}]}(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ # 2. Check if latency is working (MUST NOT be null)
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ curl -s $RYU_BASE/latency/G6_D1/URLLC
+{"src": "G6_D1", "latency_ms": null, "timestamp": "2026-05-14 10:25:49.400", "dst": "URLLC", "packet_loss_percent": null, "epoch": 1778754349.400731}(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ python clint_test.py
+=== Startup setup ===
+{
+  "enabled": true,
+  "dry_run": false,
+  "routing_steps": 37,
+  "qos_steps": 19,
+  "successes": 56,
+  "failures": 0,
+  "errors": []
+}
+
+=== Raw link utilization ===
+{
+  "timestamp": "2026-05-14 10:26:07",
+  "links": [
+    {
+      "tx_mbps": 0.0,
+      "link": "RAN -> agg"
+    },
+    {
+      "tx_mbps": 20.0,
+      "link": "agg -> RAN"
+    },
+    {
+      "tx_mbps": 0.0,
+      "link": "agg -> core"
+    },
+    {
+      "tx_mbps": 20.05,
+      "link": "core -> agg"
+    },
+    {
+      "tx_mbps": 10.1,
+      "link": "core -> sp1"
+    },
+    {
+      "tx_mbps": 9.96,
+      "link": "core -> sp2"
+    },
+    {
+      "tx_mbps": 9.95,
+      "link": "sp1 -> core"
+    },
+    {
+      "tx_mbps": 10.07,
+      "link": "sp1 -> lf1"
+    },
+    {
+      "tx_mbps": 10.1,
+      "link": "sp2 -> core"
+    },
+    {
+      "tx_mbps": 9.94,
+      "link": "sp2 -> lf1"
+    },
+    {
+      "tx_mbps": 9.93,
+      "link": "lf1 -> sp1"
+    },
+    {
+      "tx_mbps": 10.07,
+      "link": "lf1 -> sp2"
+    }
+  ]
+}
+
+=== Raw latency ===
+{
+  "src": "G6_D1",
+  "latency_ms": null,
+  "timestamp": "2026-05-14 10:26:13.466",
+  "dst": "URLLC",
+  "packet_loss_percent": null,
+  "epoch": 1778754373.466104
+}
+
+=== Parsed telemetry ===
+  core -> sp1: 10.10 Mbps
+  sp1 -> lf1 : 10.07 Mbps
+  core -> sp2: 9.96 Mbps
+  sp2 -> lf1 : 9.94 Mbps
+  latency_ms=80.000  packet_loss_percent=5.000
+
+=== RL State Vector (6D) ===
+  latency          = 1.0000
+  packet_loss      = 1.0000
+  throughput       = 0.6687
+  main_link_util   = 0.5042
+  backup_link_util = 0.9950
+  failover_active  = 0.0000
+
+  raw array: [1.         1.         0.66866666 0.50425    0.995      0.        ]
+
+=== Runtime Actions ===
+  Action 0 (do_nothing): success=True msg=Executed do_nothing metadata={}
+  Action 1 (update_queue): success=True msg=Executed update_queue metadata={'operation': 'update_queue', 'switch_id': '48'}
+  Action 2 (failover): success=True msg=Executed failover metadata={'operation': 'failover', 'switch_id': '48', 'failover_active': True}
+  Action 3 (reroute): success=True msg=Executed reroute metadata={'operation': 'reroute', 'switch_id': '48', 'failover_active': False}
+
+=== Gym Environment (3 steps) ===
+  Reset state: [1.         1.         0.66366667 0.5        0.9915     0.        ]
+  Reset info : {'failover_active': False}
+  Step 1: action=2 (failover) failover=True reward=-7.3640
+[Step   1] latency=1.000 | loss=1.000 | throughput=0.662 | u_main=0.499 | u_backup=0.987 | failover=1.000
+  Step 2: action=1 (update_queue) failover=True reward=-7.3683
+[Step   2] latency=1.000 | loss=1.000 | throughput=0.662 | u_main=0.500 | u_backup=0.985 | failover=1.000
+  Step 3: action=2 (failover) failover=True reward=-7.3696
+[Step   3] latency=1.000 | loss=1.000 | throughput=0.662 | u_main=0.500 | u_backup=0.987 | failover=1.000
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ curl -s $RYU_BASE/latency/G6_D1/URLLC
+{"src": "G6_D1", "latency_ms": null, "timestamp": "2026-05-14 10:26:51.289", "dst": "URLLC", "packet_loss_percent": null, "epoch": 1778754411.289086}(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$
+
+RYU:
+
+  System load:  0.01               Processes:              286
+  Usage of /:   48.3% of 41.17GB   Users logged in:        1
+  Memory usage: 5%                 IPv4 address for ens33: 192.168.145.131
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+0 updates can be applied immediately.
+
+169 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 20.04 at
+https://ubuntu.com/20-04
+
+New release '22.04.5 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Thu May 14 09:55:28 2026 from 192.168.145.1
+netadmin@mininet-ryu:~$ sudo docker exec -it debc86f1904f bash
+[sudo] password for netadmin:
+root@debc86f1904f:~# clear
+root@debc86f1904f:~# ryu-manager --observe-links \
+> ryu.app.rest_qos \
+> ryu.app.rest_conf_switch \
+> ryu.app.qos_rest_router \
+> ryu.app.rest_topology \
+> ryu.app.ofctl_rest \
+> network6G_monitor.py \
+> ryu.topology.switches \
+> ovs_utilization.py
+loading app ryu.app.rest_qos
+loading app ryu.app.rest_conf_switch
+loading app ryu.app.qos_rest_router
+loading app ryu.app.rest_topology
+loading app ryu.app.ofctl_rest
+loading app network6G_monitor.py
+loading app ryu.topology.switches
+loading app ovs_utilization.py
+loading app ryu.controller.ofp_handler
+loading app ryu.topology.switches
+loading app ryu.controller.ofp_handler
+instantiating app None of DPSet
+creating context dpset
+instantiating app None of ConfSwitchSet
+creating context conf_switch
+creating context wsgi
+instantiating app ryu.app.rest_conf_switch of ConfSwitchAPI
+instantiating app network6G_monitor.py of Network6GMonitor
+instantiating app ryu.controller.ofp_handler of OFPHandler
+instantiating app ryu.app.rest_qos of RestQoSAPI
+instantiating app ryu.app.rest_topology of TopologyAPI
+instantiating app ovs_utilization.py of OVSLinkUtilization
+instantiating app ryu.app.qos_rest_router of RestRouterAPI
+instantiating app ryu.topology.switches of Switches
+instantiating app ryu.app.ofctl_rest of RestStatsApi
+(165) wsgi starting up on http://0.0.0.0:8080
+[RT][INFO] switch_id=0000000000000010: Set SW config for TTL error packet in.
+[RT][INFO] switch_id=0000000000000010: Set ARP handling (packet in) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000010: Set L2 switching (normal) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000010: Set default route (drop) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000010: Start cyclic routing table update.
+[RT][INFO] switch_id=0000000000000010: Join as router.
+[RT][INFO] switch_id=0000000000000040: Set SW config for TTL error packet in.
+[RT][INFO] switch_id=0000000000000040: Set ARP handling (packet in) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000040: Set L2 switching (normal) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000040: Set default route (drop) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000040: Start cyclic routing table update.
+[RT][INFO] switch_id=0000000000000040: Join as router.
+[RT][INFO] switch_id=0000000000000050: Set SW config for TTL error packet in.
+[RT][INFO] switch_id=0000000000000050: Set ARP handling (packet in) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000050: Set L2 switching (normal) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000050: Set default route (drop) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000050: Start cyclic routing table update.
+[RT][INFO] switch_id=0000000000000050: Join as router.
+[RT][INFO] switch_id=0000000000000020: Set SW config for TTL error packet in.
+[RT][INFO] switch_id=0000000000000020: Set ARP handling (packet in) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000020: Set L2 switching (normal) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000020: Set default route (drop) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000020: Start cyclic routing table update.
+[RT][INFO] switch_id=0000000000000020: Join as router.
+[QoS][INFO] dpid=0000000000000010: Join qos switch.
+[QoS][INFO] dpid=0000000000000040: Join qos switch.
+[QoS][INFO] dpid=0000000000000050: Join qos switch.
+[QoS][INFO] dpid=0000000000000020: Join qos switch.
+[RT][INFO] switch_id=0000000000000041: Set SW config for TTL error packet in.
+[RT][INFO] switch_id=0000000000000041: Set ARP handling (packet in) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000041: Set L2 switching (normal) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000041: Set default route (drop) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000041: Start cyclic routing table update.
+[RT][INFO] switch_id=0000000000000041: Join as router.
+[RT][INFO] switch_id=0000000000000030: Set SW config for TTL error packet in.
+[RT][INFO] switch_id=0000000000000030: Set ARP handling (packet in) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000030: Set L2 switching (normal) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000030: Set default route (drop) flow [cookie=0x0]
+[RT][INFO] switch_id=0000000000000030: Start cyclic routing table update.
+[RT][INFO] switch_id=0000000000000030: Join as router.
+[QoS][INFO] dpid=0000000000000041: Join qos switch.
+[QoS][INFO] dpid=0000000000000030: Join qos switch.
+(165) accepted ('172.17.0.1', 58854)
+172.17.0.1 - - [14/May/2026 09:58:41] "PUT /v1.0/conf/switches/0000000000000010/ovsdb_addr HTTP/1.1" 201 144 0.170008
+(165) accepted ('172.17.0.1', 58866)
+[RT][INFO] switch_id=0000000000000010: Set host MAC learning (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Set IP handling (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Set L2 switching (normal) flow [cookie=0x1]
+172.17.0.1 - - [14/May/2026 09:58:41] "POST /router/0000000000000010 HTTP/1.1" 200 252 0.002467
+(165) accepted ('172.17.0.1', 58872)
+[RT][INFO] switch_id=0000000000000010: Set host MAC learning (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000010: Set IP handling (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000010: Set L2 switching (normal) flow [cookie=0x2]
+172.17.0.1 - - [14/May/2026 09:58:41] "POST /router/0000000000000010 HTTP/1.1" 200 252 0.004368
+(165) accepted ('172.17.0.1', 58880)
+[RT][INFO] switch_id=0000000000000010: Set host MAC learning (packet in) flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000010: Set IP handling (packet in) flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000010: Set L2 switching (normal) flow [cookie=0x3]
+172.17.0.1 - - [14/May/2026 09:58:41] "POST /router/0000000000000010 HTTP/1.1" 200 252 0.004007
+(165) accepted ('172.17.0.1', 58888)
+[RT][INFO] switch_id=0000000000000010: Set default routing (packet in) flow [cookie=0x10000]
+172.17.0.1 - - [14/May/2026 09:58:41] "POST /router/0000000000000010 HTTP/1.1" 200 248 0.017964
+(165) accepted ('172.17.0.1', 58894)
+172.17.0.1 - - [14/May/2026 09:58:41] "PUT /v1.0/conf/switches/0000000000000020/ovsdb_addr HTTP/1.1" 201 144 0.000526
+(165) accepted ('172.17.0.1', 58908)
+[RT][INFO] switch_id=0000000000000020: Set host MAC learning (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000020: Set IP handling (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000020: Set L2 switching (normal) flow [cookie=0x1]
+172.17.0.1 - - [14/May/2026 09:58:41] "POST /router/0000000000000020 HTTP/1.1" 200 252 0.002003
+(165) accepted ('172.17.0.1', 58910)
+[RT][INFO] switch_id=0000000000000020: Set host MAC learning (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000020: Set IP handling (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000020: Set L2 switching (normal) flow [cookie=0x2]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000020 HTTP/1.1" 200 252 0.003845
+(165) accepted ('172.17.0.1', 58920)
+[RT][INFO] switch_id=0000000000000020: Set static routing (packet in) flow [cookie=0x10000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000020 HTTP/1.1" 200 248 0.001591
+(165) accepted ('172.17.0.1', 58934)
+[RT][INFO] switch_id=0000000000000020: Set static routing (packet in) flow [cookie=0x20000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000020 HTTP/1.1" 200 248 0.001785
+(165) accepted ('172.17.0.1', 58944)
+[RT][INFO] switch_id=0000000000000020: Set default routing (packet in) flow [cookie=0x30000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000020 HTTP/1.1" 200 248 0.001576
+(165) accepted ('172.17.0.1', 58952)
+172.17.0.1 - - [14/May/2026 09:58:42] "PUT /v1.0/conf/switches/0000000000000030/ovsdb_addr HTTP/1.1" 201 144 0.000560
+(165) accepted ('172.17.0.1', 58962)
+[RT][INFO] switch_id=0000000000000030: Set host MAC learning (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000030: Set IP handling (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000030: Set L2 switching (normal) flow [cookie=0x1]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000030 HTTP/1.1" 200 252 0.001387
+(165) accepted ('172.17.0.1', 58968)
+[RT][INFO] switch_id=0000000000000030: Set host MAC learning (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000030: Set IP handling (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000030: Set L2 switching (normal) flow [cookie=0x2]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000030 HTTP/1.1" 200 252 0.163732
+(165) accepted ('172.17.0.1', 58982)
+[RT][INFO] switch_id=0000000000000030: Set host MAC learning (packet in) flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000030: Set IP handling (packet in) flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000030: Set L2 switching (normal) flow [cookie=0x3]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000030 HTTP/1.1" 200 252 0.003232
+(165) accepted ('172.17.0.1', 58988)
+[RT][INFO] switch_id=0000000000000030: Set static routing (packet in) flow [cookie=0x10000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000030 HTTP/1.1" 200 248 0.001153
+(165) accepted ('172.17.0.1', 59004)
+[RT][INFO] switch_id=0000000000000030: Set static routing (packet in) flow [cookie=0x20000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000030 HTTP/1.1" 200 248 0.001907
+(165) accepted ('172.17.0.1', 59008)
+[RT][INFO] switch_id=0000000000000030: Set static routing (packet in) flow [cookie=0x30000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000030 HTTP/1.1" 200 248 0.001248
+(165) accepted ('172.17.0.1', 59018)
+[RT][INFO] switch_id=0000000000000030: Set default routing (packet in) flow [cookie=0x40000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000030 HTTP/1.1" 200 248 0.001377
+(165) accepted ('172.17.0.1', 59032)
+172.17.0.1 - - [14/May/2026 09:58:42] "PUT /v1.0/conf/switches/0000000000000040/ovsdb_addr HTTP/1.1" 201 144 0.000490
+(165) accepted ('172.17.0.1', 59040)
+[RT][INFO] switch_id=0000000000000040: Set host MAC learning (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000040: Set IP handling (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000040: Set L2 switching (normal) flow [cookie=0x1]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000040 HTTP/1.1" 200 252 0.008353
+(165) accepted ('172.17.0.1', 59044)
+[RT][INFO] switch_id=0000000000000040: Set host MAC learning (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000040: Set IP handling (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000040: Set L2 switching (normal) flow [cookie=0x2]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000040 HTTP/1.1" 200 252 0.001253
+(165) accepted ('172.17.0.1', 59046)
+[RT][INFO] switch_id=0000000000000040: Set static routing (packet in) flow [cookie=0x10000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000040 HTTP/1.1" 200 248 0.002083
+(165) accepted ('172.17.0.1', 59056)
+[RT][INFO] switch_id=0000000000000040: Set default routing (packet in) flow [cookie=0x20000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000040 HTTP/1.1" 200 248 0.001672
+(165) accepted ('172.17.0.1', 59060)
+172.17.0.1 - - [14/May/2026 09:58:42] "PUT /v1.0/conf/switches/0000000000000041/ovsdb_addr HTTP/1.1" 201 144 0.000355
+(165) accepted ('172.17.0.1', 59062)
+[RT][INFO] switch_id=0000000000000041: Set host MAC learning (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000041: Set IP handling (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000041: Set L2 switching (normal) flow [cookie=0x1]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000041 HTTP/1.1" 200 252 0.003845
+(165) accepted ('172.17.0.1', 59068)
+[RT][INFO] switch_id=0000000000000041: Set host MAC learning (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000041: Set IP handling (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000041: Set L2 switching (normal) flow [cookie=0x2]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000041 HTTP/1.1" 200 252 0.018676
+(165) accepted ('172.17.0.1', 59076)
+[RT][INFO] switch_id=0000000000000041: Set static routing (packet in) flow [cookie=0x10000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000041 HTTP/1.1" 200 248 0.001538
+(165) accepted ('172.17.0.1', 59088)
+[RT][INFO] switch_id=0000000000000041: Set static routing (packet in) flow [cookie=0x20000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000041 HTTP/1.1" 200 248 0.001073
+(165) accepted ('172.17.0.1', 59092)
+[RT][INFO] switch_id=0000000000000041: Set default routing (packet in) flow [cookie=0x30000]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000041 HTTP/1.1" 200 248 0.002704
+(165) accepted ('172.17.0.1', 59096)
+172.17.0.1 - - [14/May/2026 09:58:42] "PUT /v1.0/conf/switches/0000000000000050/ovsdb_addr HTTP/1.1" 201 144 0.000616
+(165) accepted ('172.17.0.1', 59104)
+[RT][INFO] switch_id=0000000000000050: Set host MAC learning (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000050: Set IP handling (packet in) flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000050: Set L2 switching (normal) flow [cookie=0x1]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000050 HTTP/1.1" 200 252 0.001513
+(165) accepted ('172.17.0.1', 59120)
+[RT][INFO] switch_id=0000000000000050: Set host MAC learning (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000050: Set IP handling (packet in) flow [cookie=0x2]
+[RT][INFO] switch_id=0000000000000050: Set L2 switching (normal) flow [cookie=0x2]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000050 HTTP/1.1" 200 252 0.014467
+(165) accepted ('172.17.0.1', 59136)
+[RT][INFO] switch_id=0000000000000050: Set host MAC learning (packet in) flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Set IP handling (packet in) flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Set L2 switching (normal) flow [cookie=0x3]
+172.17.0.1 - - [14/May/2026 09:58:42] "POST /router/0000000000000050 HTTP/1.1" 200 252 0.002972
+(165) accepted ('172.17.0.1', 59142)
+[RT][INFO] switch_id=0000000000000050: Set host MAC learning (packet in) flow [cookie=0x4]
+[RT][INFO] switch_id=0000000000000050: Set IP handling (packet in) flow [cookie=0x4]
+[RT][INFO] switch_id=0000000000000050: Set L2 switching (normal) flow [cookie=0x4]
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /router/0000000000000050 HTTP/1.1" 200 252 0.015949
+(165) accepted ('172.17.0.1', 59146)
+[RT][INFO] switch_id=0000000000000050: Set static routing (packet in) flow [cookie=0x10000]
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /router/0000000000000050 HTTP/1.1" 200 248 0.002531
+(165) accepted ('172.17.0.1', 59154)
+[RT][INFO] switch_id=0000000000000050: Set default routing (packet in) flow [cookie=0x20000]
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /router/0000000000000050 HTTP/1.1" 200 248 0.003670
+(165) accepted ('172.17.0.1', 59162)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000020 HTTP/1.1" 200 247 0.001307
+(165) accepted ('172.17.0.1', 59176)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000020 HTTP/1.1" 200 247 0.001416
+(165) accepted ('172.17.0.1', 59190)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000020 HTTP/1.1" 200 247 0.000673
+(165) accepted ('172.17.0.1', 59196)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000030 HTTP/1.1" 200 247 0.001126
+(165) accepted ('172.17.0.1', 59206)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000030 HTTP/1.1" 200 247 0.000739
+(165) accepted ('172.17.0.1', 59216)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000030 HTTP/1.1" 200 247 0.001066
+(165) accepted ('172.17.0.1', 59226)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000040 HTTP/1.1" 200 247 0.001598
+(165) accepted ('172.17.0.1', 59230)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000040 HTTP/1.1" 200 247 0.001550
+(165) accepted ('172.17.0.1', 59234)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000040 HTTP/1.1" 200 247 0.000916
+(165) accepted ('172.17.0.1', 59242)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000041 HTTP/1.1" 200 247 0.000551
+(165) accepted ('172.17.0.1', 59250)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000041 HTTP/1.1" 200 247 0.000679
+(165) accepted ('172.17.0.1', 59256)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000041 HTTP/1.1" 200 247 0.001689
+(165) accepted ('172.17.0.1', 59268)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000050 HTTP/1.1" 200 247 0.000633
+(165) accepted ('172.17.0.1', 59282)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000050 HTTP/1.1" 200 247 0.000848
+(165) accepted ('172.17.0.1', 59298)
+172.17.0.1 - - [14/May/2026 09:58:43] "POST /qos/rules/0000000000000050 HTTP/1.1" 200 247 0.008097
+(165) accepted ('172.17.0.1', 59304)
+172.17.0.1 - - [14/May/2026 09:58:44] "POST /qos/queue/0000000000000030 HTTP/1.1" 200 391 1.279691
+(165) accepted ('172.17.0.1', 59316)
+172.17.0.1 - - [14/May/2026 09:58:45] "POST /qos/queue/0000000000000030 HTTP/1.1" 200 391 1.024364
+(165) accepted ('172.17.0.1', 59328)
+172.17.0.1 - - [14/May/2026 09:58:46] "POST /qos/queue/0000000000000040 HTTP/1.1" 200 391 0.409783
+(165) accepted ('172.17.0.1', 59342)
+172.17.0.1 - - [14/May/2026 09:58:46] "POST /qos/queue/0000000000000041 HTTP/1.1" 200 391 0.508253
+(165) accepted ('172.17.0.1', 45386)
+172.17.0.1 - - [14/May/2026 10:25:02] "GET /stats/portdesc/48 HTTP/1.1" 200 876 0.004125
+(165) accepted ('172.17.0.1', 42310)
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+172.17.0.1 - - [14/May/2026 10:25:49] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 258 6.183969
+(165) accepted ('172.17.0.1', 37678)
+172.17.0.1 - - [14/May/2026 10:26:05] "PUT /v1.0/conf/switches/0000000000000010/ovsdb_addr HTTP/1.1" 201 144 0.000541
+(165) accepted ('172.17.0.1', 37686)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000010 HTTP/1.1" 200 257 0.000756
+(165) accepted ('172.17.0.1', 37690)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000010 HTTP/1.1" 200 257 0.000506
+(165) accepted ('172.17.0.1', 37698)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000010 HTTP/1.1" 200 257 0.000580
+(165) accepted ('172.17.0.1', 37702)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000010 HTTP/1.1" 200 259 0.000959
+(165) accepted ('172.17.0.1', 37704)
+172.17.0.1 - - [14/May/2026 10:26:05] "PUT /v1.0/conf/switches/0000000000000020/ovsdb_addr HTTP/1.1" 201 144 0.001084
+(165) accepted ('172.17.0.1', 37714)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000020 HTTP/1.1" 200 257 0.000537
+(165) accepted ('172.17.0.1', 37718)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000020 HTTP/1.1" 200 257 0.006671
+(165) accepted ('172.17.0.1', 37730)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000020 HTTP/1.1" 200 259 0.002450
+(165) accepted ('172.17.0.1', 37744)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000020 HTTP/1.1" 200 259 0.002734
+(165) accepted ('172.17.0.1', 37756)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000020 HTTP/1.1" 200 259 0.002060
+(165) accepted ('172.17.0.1', 37766)
+172.17.0.1 - - [14/May/2026 10:26:05] "PUT /v1.0/conf/switches/0000000000000030/ovsdb_addr HTTP/1.1" 201 144 0.001708
+(165) accepted ('172.17.0.1', 37772)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000030 HTTP/1.1" 200 257 0.003352
+(165) accepted ('172.17.0.1', 37784)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000030 HTTP/1.1" 200 257 0.002720
+(165) accepted ('172.17.0.1', 37792)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000030 HTTP/1.1" 200 257 0.002184
+(165) accepted ('172.17.0.1', 37796)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000030 HTTP/1.1" 200 259 0.002216
+(165) accepted ('172.17.0.1', 37800)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000030 HTTP/1.1" 200 259 0.002308
+(165) accepted ('172.17.0.1', 37816)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000030 HTTP/1.1" 200 259 0.002965
+(165) accepted ('172.17.0.1', 37828)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000030 HTTP/1.1" 200 259 0.002342
+(165) accepted ('172.17.0.1', 37832)
+172.17.0.1 - - [14/May/2026 10:26:05] "PUT /v1.0/conf/switches/0000000000000040/ovsdb_addr HTTP/1.1" 201 144 0.002122
+(165) accepted ('172.17.0.1', 37846)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000040 HTTP/1.1" 200 257 0.003627
+(165) accepted ('172.17.0.1', 37860)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000040 HTTP/1.1" 200 257 0.002942
+(165) accepted ('172.17.0.1', 37876)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000040 HTTP/1.1" 200 259 0.002103
+(165) accepted ('172.17.0.1', 37884)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000040 HTTP/1.1" 200 259 0.002610
+(165) accepted ('172.17.0.1', 37898)
+172.17.0.1 - - [14/May/2026 10:26:05] "PUT /v1.0/conf/switches/0000000000000041/ovsdb_addr HTTP/1.1" 201 144 0.003652
+(165) accepted ('172.17.0.1', 37912)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000041 HTTP/1.1" 200 257 0.002832
+(165) accepted ('172.17.0.1', 37928)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000041 HTTP/1.1" 200 257 0.002762
+(165) accepted ('172.17.0.1', 37938)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000041 HTTP/1.1" 200 259 0.002257
+(165) accepted ('172.17.0.1', 37942)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000041 HTTP/1.1" 200 259 0.002463
+(165) accepted ('172.17.0.1', 37954)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000041 HTTP/1.1" 200 259 0.002668
+(165) accepted ('172.17.0.1', 37960)
+172.17.0.1 - - [14/May/2026 10:26:05] "PUT /v1.0/conf/switches/0000000000000050/ovsdb_addr HTTP/1.1" 201 144 0.001896
+(165) accepted ('172.17.0.1', 37970)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000050 HTTP/1.1" 200 257 0.002434
+(165) accepted ('172.17.0.1', 37982)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000050 HTTP/1.1" 200 257 0.003347
+(165) accepted ('172.17.0.1', 37996)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000050 HTTP/1.1" 200 257 0.002649
+(165) accepted ('172.17.0.1', 38006)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000050 HTTP/1.1" 200 257 0.003098
+(165) accepted ('172.17.0.1', 38016)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000050 HTTP/1.1" 200 259 0.002249
+(165) accepted ('172.17.0.1', 38026)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /router/0000000000000050 HTTP/1.1" 200 259 0.003036
+(165) accepted ('172.17.0.1', 38028)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /qos/rules/0000000000000020 HTTP/1.1" 200 247 0.002334
+(165) accepted ('172.17.0.1', 38038)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /qos/rules/0000000000000020 HTTP/1.1" 200 247 0.002640
+(165) accepted ('172.17.0.1', 38042)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /qos/rules/0000000000000020 HTTP/1.1" 200 247 0.004169
+(165) accepted ('172.17.0.1', 38058)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /qos/rules/0000000000000030 HTTP/1.1" 200 247 0.003154
+(165) accepted ('172.17.0.1', 38066)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /qos/rules/0000000000000030 HTTP/1.1" 200 247 0.002610
+(165) accepted ('172.17.0.1', 38070)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /qos/rules/0000000000000030 HTTP/1.1" 200 247 0.002526
+(165) accepted ('172.17.0.1', 38078)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /qos/rules/0000000000000040 HTTP/1.1" 200 247 0.004353
+(165) accepted ('172.17.0.1', 38086)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /qos/rules/0000000000000040 HTTP/1.1" 200 247 0.003343
+(165) accepted ('172.17.0.1', 38096)
+172.17.0.1 - - [14/May/2026 10:26:05] "POST /qos/rules/0000000000000040 HTTP/1.1" 200 247 0.003906
+(165) accepted ('172.17.0.1', 38110)
+172.17.0.1 - - [14/May/2026 10:26:06] "POST /qos/rules/0000000000000041 HTTP/1.1" 200 247 0.004511
+(165) accepted ('172.17.0.1', 38114)
+172.17.0.1 - - [14/May/2026 10:26:06] "POST /qos/rules/0000000000000041 HTTP/1.1" 200 247 0.001145
+(165) accepted ('172.17.0.1', 38126)
+172.17.0.1 - - [14/May/2026 10:26:06] "POST /qos/rules/0000000000000041 HTTP/1.1" 200 247 0.001560
+(165) accepted ('172.17.0.1', 38132)
+172.17.0.1 - - [14/May/2026 10:26:06] "POST /qos/rules/0000000000000050 HTTP/1.1" 200 247 0.005635
+(165) accepted ('172.17.0.1', 38146)
+172.17.0.1 - - [14/May/2026 10:26:06] "POST /qos/rules/0000000000000050 HTTP/1.1" 200 247 0.004514
+(165) accepted ('172.17.0.1', 38162)
+172.17.0.1 - - [14/May/2026 10:26:06] "POST /qos/rules/0000000000000050 HTTP/1.1" 200 247 0.005804
+(165) accepted ('172.17.0.1', 38168)
+172.17.0.1 - - [14/May/2026 10:26:06] "POST /qos/queue/0000000000000030 HTTP/1.1" 200 391 0.348862
+(165) accepted ('172.17.0.1', 38176)
+172.17.0.1 - - [14/May/2026 10:26:06] "POST /qos/queue/0000000000000030 HTTP/1.1" 200 391 0.264662
+(165) accepted ('172.17.0.1', 38184)
+172.17.0.1 - - [14/May/2026 10:26:07] "POST /qos/queue/0000000000000040 HTTP/1.1" 200 391 0.334294
+(165) accepted ('172.17.0.1', 38200)
+172.17.0.1 - - [14/May/2026 10:26:07] "POST /qos/queue/0000000000000041 HTTP/1.1" 200 391 0.281598
+(165) accepted ('172.17.0.1', 38204)
+172.17.0.1 - - [14/May/2026 10:26:07] "GET /links/utilization HTTP/1.1" 200 679 0.000660
+(165) accepted ('172.17.0.1', 38212)
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+172.17.0.1 - - [14/May/2026 10:26:13] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 282 6.157948
+(165) accepted ('172.17.0.1', 35412)
+172.17.0.1 - - [14/May/2026 10:26:13] "POST /qos/queue/0000000000000030 HTTP/1.1" 200 392 0.278210
+(165) accepted ('172.17.0.1', 35424)
+172.17.0.1 - - [14/May/2026 10:26:13] "POST /router/0000000000000030 HTTP/1.1" 200 259 0.001680
+(165) accepted ('172.17.0.1', 35440)
+172.17.0.1 - - [14/May/2026 10:26:13] "POST /router/0000000000000030 HTTP/1.1" 200 259 0.002288
+(165) accepted ('172.17.0.1', 35446)
+172.17.0.1 - - [14/May/2026 10:26:14] "GET /links/utilization HTTP/1.1" 200 678 0.000431
+(165) accepted ('172.17.0.1', 35462)
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+172.17.0.1 - - [14/May/2026 10:26:20] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 282 6.183201
+(165) accepted ('172.17.0.1', 51236)
+172.17.0.1 - - [14/May/2026 10:26:20] "POST /router/0000000000000030 HTTP/1.1" 200 259 0.001170
+(165) accepted ('172.17.0.1', 51248)
+172.17.0.1 - - [14/May/2026 10:26:21] "GET /links/utilization HTTP/1.1" 200 678 0.000676
+(165) accepted ('172.17.0.1', 51262)
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+172.17.0.1 - - [14/May/2026 10:26:28] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 282 6.152179
+(165) accepted ('172.17.0.1', 51268)
+172.17.0.1 - - [14/May/2026 10:26:28] "POST /qos/queue/0000000000000030 HTTP/1.1" 200 392 0.349741
+(165) accepted ('172.17.0.1', 59118)
+172.17.0.1 - - [14/May/2026 10:26:29] "GET /links/utilization HTTP/1.1" 200 678 0.002877
+(165) accepted ('172.17.0.1', 59128)
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+172.17.0.1 - - [14/May/2026 10:26:35] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 282 6.159202
+(165) accepted ('172.17.0.1', 59132)
+172.17.0.1 - - [14/May/2026 10:26:35] "POST /router/0000000000000030 HTTP/1.1" 200 259 0.000957
+(165) accepted ('172.17.0.1', 59134)
+172.17.0.1 - - [14/May/2026 10:26:36] "GET /links/utilization HTTP/1.1" 200 678 0.000606
+(165) accepted ('172.17.0.1', 59150)
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+172.17.0.1 - - [14/May/2026 10:26:39] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 282 3.092929
+(165) accepted ('172.17.0.1', 45426)
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+RestRouterAPI: Exception occurred during handler processing. Backtrace from offending handler [packet_in_handler] servicing event [EventOFPPacketIn] follows.
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/ryu/base/app_manager.py", line 290, in _event_loop
+    handler(ev)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 271, in packet_in_handler
+    RouterController.packet_in_handler(ev.msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 374, in packet_in_handler
+    router.packet_in_handler(msg)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 583, in packet_in_handler
+    self[vlan_id].packet_in_handler(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 950, in packet_in_handler
+    self._packetin_arp(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 978, in _packetin_arp
+    gw_flg = self._update_routing_tbl(msg, header_list)
+  File "/usr/local/lib/python2.7/dist-packages/ryu/app/qos_rest_router.py", line 1168, in _update_routing_tbl
+    dst_mac = self.port_data[out_port].mac
+KeyError: 1
+172.17.0.1 - - [14/May/2026 10:26:51] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 258 6.159592
+Mininet:
+
+  System load:  0.1                Processes:              257
+  Usage of /:   48.5% of 41.17GB   Users logged in:        1
+  Memory usage: 5%                 IPv4 address for ens33: 192.168.145.131
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Infrastructure is not enabled.
+
+0 updates can be applied immediately.
+
+169 additional security updates can be applied with ESM Infra.
+Learn more about enabling ESM Infra service for Ubuntu 20.04 at
+https://ubuntu.com/20-04
+
+New release '22.04.5 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+
+Last login: Thu May 14 09:56:10 2026 from 192.168.145.1
+netadmin@mininet-ryu:~$ sudo docker exec -it debc86f1904f bash
+[sudo] password for netadmin:
+root@debc86f1904f:~# clear
+root@debc86f1904f:~# mn --custom ~/6g-lab/6G_Topo.py \
+> --topo 6gtopo \
+> --controller=remote,ip=127.0.0.1,port=6633 \
+> --switch=ovs,protocols=OpenFlow13
+*** Error setting resource limits. Mininet's performance may be affected.
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+G6_D1 G6_D2 G6_IOT_D MNR_D MNR_SVR URLLC eMBB mMTC
+*** Adding switches:
+RAN agg core lf1 sp1 sp2
+*** Adding links:
+(G6_D1, RAN) (G6_D2, RAN) (G6_IOT_D, RAN) (MNR_D, RAN) (MNR_SVR, lf1) (RAN, agg) (URLLC, lf1) (agg, core) (core, sp1) (core, sp2) (eMBB, lf1) (mMTC, lf1) (sp1, lf1) (sp2, lf1)
+*** Configuring hosts
+G6_D1 G6_D2 G6_IOT_D MNR_D MNR_SVR URLLC eMBB mMTC
+*** Starting controller
+c0
+*** Starting 6 switches
+RAN agg core lf1 sp1 sp2 ...
+*** Starting CLI:
+mininet> G6_D1 ip route add default via 10.0.0.254
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: Gip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+mininet> eMBB ip route add default via 20.0.0.254
+mininet> mMTC ip route add default via 20.0.0.254
+mininet>
+mininet> MNR_SVR ip route add default via 18.0.0.254
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: 6ip: command not found
+mininet> G6_D2 ip route add default via 11.0.0.254
+bash: _ip: command not found
+mininet> G6_IOT_D ip route add default via 17.0.0.254
+bash: D2: command not found
+bash: G6_IOT_D: command not found
+bash: MNR_D: command not found
+bash: URLLC: command not found
+mininet> URLLC ip route add default via 20.0.0.254
+RTNETLINK answers: File exists
+mininet> MNR_D ip route add default via 12.0.0.25
+ERROR: unknown command "route"
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: Bip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+RTNETLINK answers: File exists
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: iip: command not found
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+Usage: inet_route [-vF] del {-host|-net} Target[/prefix] [gw Gw] [metric M] [[dev] If]
+       inet_route [-vF] add {-host|-net} Target[/prefix] [gw Gw] [metric M]
+                              [netmask N] [mss Mss] [window W] [irtt I]
+                              [mod] [dyn] [reinstate] [[dev] If]
+       inet_route [-vF] add {-host|-net} Target[/prefix] [metric M] reject
+       inet_route [-FC] flush      NOT supported
+bash: mMTC: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+ERROR: unknown command "route"
+mininet> URLLC ip route add default via 20.0.0.254
+bash: R: command not found
+mininet> MNR_D ip route add default via 17.0.0.254
+bash: Vip: command not found
+mininet> MNR_D ip route add default via 17.0.0.254
+RTNETLINK answers: File exists
+mininet> MNR_D ip route add default via 12.0.0.25
+RTNETLINK answers: Network is unreachable
+mininet> MNR_D ip route add default via 12.0.0.25
+bash: MBB: command not found
+bash: mMTC: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+mininet> MNR_SVR ip route add default via 18.0.0.254
+bash: ute: command not found
+bash: eMBip: command not found
+mininet> MNR_SVR ip route add default via 18.0.0.254
+RTNETLINK answers: File exists
+mininet> MNR_SVR ip route add default via 18.0.0.254
+RTNETLINK answers: File exists
+mininet> URLLC ip route add default via 20.0.0.254
+RTNETLINK answers: File exists
+mininet> eMBB ip route add default via 20.0.0.254
+bash: rip: command not found
+mininet> mMTC ip route add default via 20.0.0.254
+bash: oip: command not found
+mininet> mMTC ip route add default via 20.0.0.254
+RTNETLINK answers: File exists
+mininet>

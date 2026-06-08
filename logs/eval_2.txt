@@ -1,0 +1,1968 @@
+RYU: 
+
+0.000432
+(604) accepted ('172.17.0.1', 35968)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:27:20] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.724617
+(604) accepted ('172.17.0.1', 35970)
+172.17.0.1 - - [30/May/2026 10:27:21] "GET /links/utilization HTTP/1.1" 200 685 0.000450
+(604) accepted ('172.17.0.1', 35978)
+172.17.0.1 - - [30/May/2026 10:27:26] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.728581
+(604) accepted ('172.17.0.1', 44928)
+172.17.0.1 - - [30/May/2026 10:27:27] "GET /links/utilization HTTP/1.1" 200 682 0.000467
+(604) accepted ('172.17.0.1', 44930)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:27:33] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.390109
+(604) accepted ('172.17.0.1', 37126)
+172.17.0.1 - - [30/May/2026 10:27:34] "GET /links/utilization HTTP/1.1" 200 682 0.000537
+(604) accepted ('172.17.0.1', 37142)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:27:39] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.717065
+(604) accepted ('172.17.0.1', 37144)
+172.17.0.1 - - [30/May/2026 10:27:40] "GET /links/utilization HTTP/1.1" 200 683 0.000456
+(604) accepted ('172.17.0.1', 37154)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:27:46] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.383354
+(604) accepted ('172.17.0.1', 57720)
+172.17.0.1 - - [30/May/2026 10:27:47] "GET /links/utilization HTTP/1.1" 200 687 0.000401
+(604) accepted ('172.17.0.1', 57726)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:27:52] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.675129
+(604) accepted ('172.17.0.1', 41410)
+172.17.0.1 - - [30/May/2026 10:27:53] "GET /links/utilization HTTP/1.1" 200 686 0.000708
+(604) accepted ('172.17.0.1', 41412)
+172.17.0.1 - - [30/May/2026 10:27:59] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.763348
+(604) accepted ('172.17.0.1', 41416)
+172.17.0.1 - - [30/May/2026 10:28:00] "GET /links/utilization HTTP/1.1" 200 684 0.000381
+(604) accepted ('172.17.0.1', 41420)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:28:06] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.729255
+(604) accepted ('172.17.0.1', 35676)
+172.17.0.1 - - [30/May/2026 10:28:07] "GET /links/utilization HTTP/1.1" 200 684 0.000389
+(604) accepted ('172.17.0.1', 35688)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:28:12] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.394975
+(604) accepted ('172.17.0.1', 41794)
+172.17.0.1 - - [30/May/2026 10:28:13] "GET /links/utilization HTTP/1.1" 200 687 0.000683
+(604) accepted ('172.17.0.1', 41802)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:28:19] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.425474
+(604) accepted ('172.17.0.1', 41814)
+172.17.0.1 - - [30/May/2026 10:28:20] "GET /links/utilization HTTP/1.1" 200 687 0.000457
+(604) accepted ('172.17.0.1', 41822)
+172.17.0.1 - - [30/May/2026 10:28:26] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.742318
+(604) accepted ('172.17.0.1', 42914)
+172.17.0.1 - - [30/May/2026 10:28:27] "GET /links/utilization HTTP/1.1" 200 682 0.000629
+(604) accepted ('172.17.0.1', 42916)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:28:32] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.700858
+(604) accepted ('172.17.0.1', 34180)
+172.17.0.1 - - [30/May/2026 10:28:33] "GET /links/utilization HTTP/1.1" 200 684 0.000754
+(604) accepted ('172.17.0.1', 34188)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:28:39] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.711438
+(604) accepted ('172.17.0.1', 34190)
+172.17.0.1 - - [30/May/2026 10:28:40] "GET /links/utilization HTTP/1.1" 200 684 0.000457
+(604) accepted ('172.17.0.1', 34192)
+172.17.0.1 - - [30/May/2026 10:28:45] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.348857
+(604) accepted ('172.17.0.1', 41770)
+172.17.0.1 - - [30/May/2026 10:28:46] "GET /links/utilization HTTP/1.1" 200 686 0.000702
+(604) accepted ('172.17.0.1', 41784)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:28:52] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.726622
+(604) accepted ('172.17.0.1', 46482)
+172.17.0.1 - - [30/May/2026 10:28:53] "GET /links/utilization HTTP/1.1" 200 684 0.000613
+(604) accepted ('172.17.0.1', 46490)
+172.17.0.1 - - [30/May/2026 10:28:59] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.762908
+(604) accepted ('172.17.0.1', 46492)
+172.17.0.1 - - [30/May/2026 10:29:00] "GET /links/utilization HTTP/1.1" 200 684 0.000590
+(604) accepted ('172.17.0.1', 46500)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:29:05] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.376001
+(604) accepted ('172.17.0.1', 43294)
+172.17.0.1 - - [30/May/2026 10:29:06] "GET /links/utilization HTTP/1.1" 200 688 0.000569
+(604) accepted ('172.17.0.1', 43296)
+172.17.0.1 - - [30/May/2026 10:29:12] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.773517
+(604) accepted ('172.17.0.1', 50884)
+172.17.0.1 - - [30/May/2026 10:29:13] "GET /links/utilization HTTP/1.1" 200 684 0.000486
+(604) accepted ('172.17.0.1', 50900)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:29:18] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.361010
+(604) accepted ('172.17.0.1', 50912)
+172.17.0.1 - - [30/May/2026 10:29:19] "GET /links/utilization HTTP/1.1" 200 683 0.000598
+(604) accepted ('172.17.0.1', 50926)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:29:25] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.767925
+(604) accepted ('172.17.0.1', 53362)
+172.17.0.1 - - [30/May/2026 10:29:26] "GET /links/utilization HTTP/1.1" 200 684 0.000574
+(604) accepted ('172.17.0.1', 53366)
+172.17.0.1 - - [30/May/2026 10:29:32] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.359209
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+(604) accepted ('172.17.0.1', 36626)
+172.17.0.1 - - [30/May/2026 10:29:33] "GET /links/utilization HTTP/1.1" 200 688 0.001285
+(604) accepted ('172.17.0.1', 36630)
+172.17.0.1 - - [30/May/2026 10:29:38] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.403312
+(604) accepted ('172.17.0.1', 36644)
+172.17.0.1 - - [30/May/2026 10:29:39] "GET /links/utilization HTTP/1.1" 200 685 0.000390
+(604) accepted ('172.17.0.1', 36650)
+172.17.0.1 - - [30/May/2026 10:29:45] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.802497
+(604) accepted ('172.17.0.1', 52064)
+172.17.0.1 - - [30/May/2026 10:29:46] "GET /links/utilization HTTP/1.1" 200 684 0.000978
+(604) accepted ('172.17.0.1', 52066)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:29:51] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.383024
+(604) accepted ('172.17.0.1', 38252)
+172.17.0.1 - - [30/May/2026 10:29:52] "GET /links/utilization HTTP/1.1" 200 685 0.001130
+(604) accepted ('172.17.0.1', 38254)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:29:58] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.717386
+(604) accepted ('172.17.0.1', 38262)
+172.17.0.1 - - [30/May/2026 10:29:59] "GET /links/utilization HTTP/1.1" 200 684 0.000550
+(604) accepted ('172.17.0.1', 38274)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:30:04] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.374758
+(604) accepted ('172.17.0.1', 39822)
+172.17.0.1 - - [30/May/2026 10:30:05] "GET /links/utilization HTTP/1.1" 200 686 0.000625
+(604) accepted ('172.17.0.1', 39828)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:30:11] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.406863
+(604) accepted ('172.17.0.1', 58456)
+172.17.0.1 - - [30/May/2026 10:30:12] "GET /links/utilization HTTP/1.1" 200 684 0.000583
+(604) accepted ('172.17.0.1', 58464)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:30:17] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.689519
+(604) accepted ('172.17.0.1', 58474)
+172.17.0.1 - - [30/May/2026 10:30:18] "GET /links/utilization HTTP/1.1" 200 684 0.001571
+(604) accepted ('172.17.0.1', 58482)
+172.17.0.1 - - [30/May/2026 10:30:24] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.333839
+(604) accepted ('172.17.0.1', 51870)
+172.17.0.1 - - [30/May/2026 10:30:25] "GET /links/utilization HTTP/1.1" 200 686 0.000668
+(604) accepted ('172.17.0.1', 51884)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:30:30] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.772637
+(604) accepted ('172.17.0.1', 60140)
+172.17.0.1 - - [30/May/2026 10:30:31] "GET /links/utilization HTTP/1.1" 200 684 0.000874
+(604) accepted ('172.17.0.1', 60148)
+172.17.0.1 - - [30/May/2026 10:30:37] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.759657
+(604) accepted ('172.17.0.1', 60152)
+172.17.0.1 - - [30/May/2026 10:30:38] "GET /links/utilization HTTP/1.1" 200 688 0.000409
+(604) accepted ('172.17.0.1', 60156)
+172.17.0.1 - - [30/May/2026 10:30:44] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.763211
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+(604) accepted ('172.17.0.1', 44634)
+172.17.0.1 - - [30/May/2026 10:30:45] "GET /links/utilization HTTP/1.1" 200 685 0.000575
+(604) accepted ('172.17.0.1', 44644)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:30:51] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.737738
+(604) accepted ('172.17.0.1', 48628)
+172.17.0.1 - - [30/May/2026 10:30:52] "GET /links/utilization HTTP/1.1" 200 684 0.000423
+(604) accepted ('172.17.0.1', 48636)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:30:57] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.435701
+(604) accepted ('172.17.0.1', 48642)
+172.17.0.1 - - [30/May/2026 10:30:58] "GET /links/utilization HTTP/1.1" 200 684 0.000396
+(604) accepted ('172.17.0.1', 48646)
+172.17.0.1 - - [30/May/2026 10:31:04] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.650136
+(604) accepted ('172.17.0.1', 42550)
+172.17.0.1 - - [30/May/2026 10:31:05] "GET /links/utilization HTTP/1.1" 200 688 0.000377
+(604) accepted ('172.17.0.1', 42554)
+172.17.0.1 - - [30/May/2026 10:31:10] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.442799
+(604) accepted ('172.17.0.1', 53926)
+172.17.0.1 - - [30/May/2026 10:31:11] "GET /links/utilization HTTP/1.1" 200 684 0.000536
+(604) accepted ('172.17.0.1', 53940)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:31:17] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.682139
+(604) accepted ('172.17.0.1', 53950)
+172.17.0.1 - - [30/May/2026 10:31:18] "GET /links/utilization HTTP/1.1" 200 685 0.000569
+(604) accepted ('172.17.0.1', 53964)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:31:24] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.704016
+(604) accepted ('172.17.0.1', 33194)
+172.17.0.1 - - [30/May/2026 10:31:25] "GET /links/utilization HTTP/1.1" 200 684 0.000567
+(604) accepted ('172.17.0.1', 33202)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:31:30] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.324993
+(604) accepted ('172.17.0.1', 46626)
+172.17.0.1 - - [30/May/2026 10:31:31] "GET /links/utilization HTTP/1.1" 200 683 0.000553
+(604) accepted ('172.17.0.1', 46632)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:31:37] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.758687
+(604) accepted ('172.17.0.1', 46638)
+172.17.0.1 - - [30/May/2026 10:31:38] "GET /links/utilization HTTP/1.1" 200 684 0.000515
+(604) accepted ('172.17.0.1', 46652)
+172.17.0.1 - - [30/May/2026 10:31:43] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.328203
+(604) accepted ('172.17.0.1', 49644)
+172.17.0.1 - - [30/May/2026 10:31:44] "GET /links/utilization HTTP/1.1" 200 688 0.000829
+(604) accepted ('172.17.0.1', 49658)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:31:50] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.358572
+(604) accepted ('172.17.0.1', 49664)
+172.17.0.1 - - [30/May/2026 10:31:51] "GET /links/utilization HTTP/1.1" 200 684 0.000681
+(604) accepted ('172.17.0.1', 49670)
+172.17.0.1 - - [30/May/2026 10:31:56] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.396002
+(604) accepted ('172.17.0.1', 40886)
+172.17.0.1 - - [30/May/2026 10:31:57] "GET /links/utilization HTTP/1.1" 200 684 0.000527
+(604) accepted ('172.17.0.1', 40898)
+172.17.0.1 - - [30/May/2026 10:32:02] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.371551
+(604) accepted ('172.17.0.1', 52806)
+172.17.0.1 - - [30/May/2026 10:32:03] "GET /links/utilization HTTP/1.1" 200 687 0.002418
+(604) accepted ('172.17.0.1', 52822)
+172.17.0.1 - - [30/May/2026 10:32:09] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.705926
+(604) accepted ('172.17.0.1', 52834)
+172.17.0.1 - - [30/May/2026 10:32:10] "GET /links/utilization HTTP/1.1" 200 686 0.000533
+(604) accepted ('172.17.0.1', 52838)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:32:16] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.756143
+(604) accepted ('172.17.0.1', 52542)
+172.17.0.1 - - [30/May/2026 10:32:17] "GET /links/utilization HTTP/1.1" 200 686 0.000548
+(604) accepted ('172.17.0.1', 52544)
+172.17.0.1 - - [30/May/2026 10:32:22] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.717298
+(604) accepted ('172.17.0.1', 41810)
+172.17.0.1 - - [30/May/2026 10:32:23] "GET /links/utilization HTTP/1.1" 200 684 0.000607
+(604) accepted ('172.17.0.1', 41818)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:32:29] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.385016
+(604) accepted ('172.17.0.1', 41820)
+172.17.0.1 - - [30/May/2026 10:32:30] "GET /links/utilization HTTP/1.1" 200 684 0.000660
+(604) accepted ('172.17.0.1', 41834)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:32:36] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.622010
+(604) accepted ('172.17.0.1', 53430)
+172.17.0.1 - - [30/May/2026 10:32:37] "GET /links/utilization HTTP/1.1" 200 685 0.000480
+(604) accepted ('172.17.0.1', 53436)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:32:42] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.395146
+(604) accepted ('172.17.0.1', 57862)
+172.17.0.1 - - [30/May/2026 10:32:43] "GET /links/utilization HTTP/1.1" 200 687 0.000649
+(604) accepted ('172.17.0.1', 57874)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:32:49] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.728744
+(604) accepted ('172.17.0.1', 57888)
+172.17.0.1 - - [30/May/2026 10:32:50] "GET /links/utilization HTTP/1.1" 200 686 0.000731
+(604) accepted ('172.17.0.1', 57900)
+172.17.0.1 - - [30/May/2026 10:32:55] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.438797
+(604) accepted ('172.17.0.1', 54504)
+172.17.0.1 - - [30/May/2026 10:32:56] "GET /links/utilization HTTP/1.1" 200 685 0.000988
+(604) accepted ('172.17.0.1', 54520)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:33:01] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.386759
+(604) accepted ('172.17.0.1', 55098)
+172.17.0.1 - - [30/May/2026 10:33:03] "GET /links/utilization HTTP/1.1" 200 684 0.000819
+(604) accepted ('172.17.0.1', 55102)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:33:08] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.465554
+(604) accepted ('172.17.0.1', 55108)
+172.17.0.1 - - [30/May/2026 10:33:09] "GET /links/utilization HTTP/1.1" 200 685 0.001416
+(604) accepted ('172.17.0.1', 55112)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:33:14] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.421995
+(604) accepted ('172.17.0.1', 50962)
+172.17.0.1 - - [30/May/2026 10:33:15] "GET /links/utilization HTTP/1.1" 200 684 0.001443
+(604) accepted ('172.17.0.1', 50970)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:33:21] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.412708
+(604) accepted ('172.17.0.1', 55212)
+172.17.0.1 - - [30/May/2026 10:33:22] "GET /links/utilization HTTP/1.1" 200 684 0.000488
+(604) accepted ('172.17.0.1', 55226)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:33:27] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.405217
+(604) accepted ('172.17.0.1', 55232)
+172.17.0.1 - - [30/May/2026 10:33:28] "GET /links/utilization HTTP/1.1" 200 685 0.000961
+(604) accepted ('172.17.0.1', 55244)
+172.17.0.1 - - [30/May/2026 10:33:34] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.648054
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+(604) accepted ('172.17.0.1', 54240)
+172.17.0.1 - - [30/May/2026 10:33:35] "GET /links/utilization HTTP/1.1" 200 683 0.000750
+(604) accepted ('172.17.0.1', 54250)
+172.17.0.1 - - [30/May/2026 10:33:41] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.757870
+(604) accepted ('172.17.0.1', 50880)
+172.17.0.1 - - [30/May/2026 10:33:42] "GET /links/utilization HTTP/1.1" 200 684 0.000583
+(604) accepted ('172.17.0.1', 50882)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:33:47] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.399541
+(604) accepted ('172.17.0.1', 50894)
+172.17.0.1 - - [30/May/2026 10:33:48] "GET /links/utilization HTTP/1.1" 200 684 0.000677
+(604) accepted ('172.17.0.1', 50902)
+172.17.0.1 - - [30/May/2026 10:33:53] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.379368
+(604) accepted ('172.17.0.1', 38594)
+172.17.0.1 - - [30/May/2026 10:33:54] "GET /links/utilization HTTP/1.1" 200 685 0.000679
+(604) accepted ('172.17.0.1', 38596)
+172.17.0.1 - - [30/May/2026 10:34:00] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.452746
+(604) accepted ('172.17.0.1', 38598)
+172.17.0.1 - - [30/May/2026 10:34:01] "GET /links/utilization HTTP/1.1" 200 684 0.000592
+(604) accepted ('172.17.0.1', 38600)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:34:07] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.649504
+(604) accepted ('172.17.0.1', 40228)
+172.17.0.1 - - [30/May/2026 10:34:08] "GET /links/utilization HTTP/1.1" 200 686 0.000393
+(604) accepted ('172.17.0.1', 40236)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:34:13] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.766549
+(604) accepted ('172.17.0.1', 39080)
+172.17.0.1 - - [30/May/2026 10:34:14] "GET /links/utilization HTTP/1.1" 200 685 0.000466
+(604) accepted ('172.17.0.1', 39086)
+172.17.0.1 - - [30/May/2026 10:34:20] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.351360
+(604) accepted ('172.17.0.1', 39096)
+172.17.0.1 - - [30/May/2026 10:34:21] "GET /links/utilization HTTP/1.1" 200 683 0.000629
+(604) accepted ('172.17.0.1', 39108)
+172.17.0.1 - - [30/May/2026 10:34:26] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.761369
+(604) accepted ('172.17.0.1', 37288)
+172.17.0.1 - - [30/May/2026 10:34:27] "GET /links/utilization HTTP/1.1" 200 684 0.000455
+(604) accepted ('172.17.0.1', 37290)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:34:33] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.375417
+(604) accepted ('172.17.0.1', 58320)
+172.17.0.1 - - [30/May/2026 10:34:34] "GET /links/utilization HTTP/1.1" 200 683 0.000970
+(604) accepted ('172.17.0.1', 58328)
+172.17.0.1 - - [30/May/2026 10:34:39] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.351398
+(604) accepted ('172.17.0.1', 58342)
+172.17.0.1 - - [30/May/2026 10:34:40] "GET /links/utilization HTTP/1.1" 200 685 0.000532
+(604) accepted ('172.17.0.1', 58356)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:34:46] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.741851
+(604) accepted ('172.17.0.1', 52548)
+172.17.0.1 - - [30/May/2026 10:34:47] "GET /links/utilization HTTP/1.1" 200 686 0.000613
+(604) accepted ('172.17.0.1', 52550)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:34:53] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.743514
+(604) accepted ('172.17.0.1', 41302)
+172.17.0.1 - - [30/May/2026 10:34:54] "GET /links/utilization HTTP/1.1" 200 685 0.000545
+(604) accepted ('172.17.0.1', 41310)
+172.17.0.1 - - [30/May/2026 10:34:59] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.777292
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+(604) accepted ('172.17.0.1', 41326)
+172.17.0.1 - - [30/May/2026 10:35:01] "GET /links/utilization HTTP/1.1" 200 685 0.000359
+(604) accepted ('172.17.0.1', 41338)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:35:06] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.763841
+(604) accepted ('172.17.0.1', 60988)
+172.17.0.1 - - [30/May/2026 10:35:07] "GET /links/utilization HTTP/1.1" 200 683 0.000502
+(604) accepted ('172.17.0.1', 60996)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:35:13] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.351078
+(604) accepted ('172.17.0.1', 59932)
+172.17.0.1 - - [30/May/2026 10:35:14] "GET /links/utilization HTTP/1.1" 200 684 0.000380
+(604) accepted ('172.17.0.1', 59942)
+172.17.0.1 - - [30/May/2026 10:35:19] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.400820
+(604) accepted ('172.17.0.1', 59954)
+172.17.0.1 - - [30/May/2026 10:35:20] "GET /links/utilization HTTP/1.1" 200 685 0.000476
+(604) accepted ('172.17.0.1', 59960)
+172.17.0.1 - - [30/May/2026 10:35:26] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.690445
+(604) accepted ('172.17.0.1', 41010)
+172.17.0.1 - - [30/May/2026 10:35:27] "GET /links/utilization HTTP/1.1" 200 686 0.000556
+(604) accepted ('172.17.0.1', 41016)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:35:33] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.774601
+(604) accepted ('172.17.0.1', 56160)
+172.17.0.1 - - [30/May/2026 10:35:34] "GET /links/utilization HTTP/1.1" 200 688 0.000472
+(604) accepted ('172.17.0.1', 56174)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:35:39] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.754115
+(604) accepted ('172.17.0.1', 56190)
+172.17.0.1 - - [30/May/2026 10:35:40] "GET /links/utilization HTTP/1.1" 200 683 0.001692
+(604) accepted ('172.17.0.1', 56192)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:35:46] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.654079
+(604) accepted ('172.17.0.1', 49536)
+172.17.0.1 - - [30/May/2026 10:35:47] "GET /links/utilization HTTP/1.1" 200 688 0.000779
+(604) accepted ('172.17.0.1', 49546)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:35:52] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.394836
+(604) accepted ('172.17.0.1', 42152)
+172.17.0.1 - - [30/May/2026 10:35:53] "GET /links/utilization HTTP/1.1" 200 685 0.000465
+(604) accepted ('172.17.0.1', 42162)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:35:59] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.604441
+(604) accepted ('172.17.0.1', 42164)
+172.17.0.1 - - [30/May/2026 10:36:00] "GET /links/utilization HTTP/1.1" 200 686 0.000394
+(604) accepted ('172.17.0.1', 42168)
+172.17.0.1 - - [30/May/2026 10:36:05] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.402687
+(604) accepted ('172.17.0.1', 46048)
+172.17.0.1 - - [30/May/2026 10:36:06] "GET /links/utilization HTTP/1.1" 200 686 0.000476
+(604) accepted ('172.17.0.1', 46058)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:36:12] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.677658
+(604) accepted ('172.17.0.1', 52992)
+172.17.0.1 - - [30/May/2026 10:36:13] "GET /links/utilization HTTP/1.1" 200 684 0.001164
+(604) accepted ('172.17.0.1', 52994)
+172.17.0.1 - - [30/May/2026 10:36:18] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.373394
+(604) accepted ('172.17.0.1', 53000)
+172.17.0.1 - - [30/May/2026 10:36:19] "GET /links/utilization HTTP/1.1" 200 685 0.000913
+(604) accepted ('172.17.0.1', 53008)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:36:25] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.385510
+(604) accepted ('172.17.0.1', 40862)
+172.17.0.1 - - [30/May/2026 10:36:26] "GET /links/utilization HTTP/1.1" 200 684 0.000633
+(604) accepted ('172.17.0.1', 40876)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:36:31] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.597931
+(604) accepted ('172.17.0.1', 53992)
+172.17.0.1 - - [30/May/2026 10:36:32] "GET /links/utilization HTTP/1.1" 200 686 0.000532
+(604) accepted ('172.17.0.1', 54002)
+172.17.0.1 - - [30/May/2026 10:36:38] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.686315
+(604) accepted ('172.17.0.1', 54012)
+172.17.0.1 - - [30/May/2026 10:36:39] "GET /links/utilization HTTP/1.1" 200 683 0.000638
+(604) accepted ('172.17.0.1', 54028)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:36:45] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.695296
+(604) accepted ('172.17.0.1', 53768)
+172.17.0.1 - - [30/May/2026 10:36:46] "GET /links/utilization HTTP/1.1" 200 688 0.000754
+(604) accepted ('172.17.0.1', 53770)
+172.17.0.1 - - [30/May/2026 10:36:51] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.374685
+(604) accepted ('172.17.0.1', 50264)
+172.17.0.1 - - [30/May/2026 10:36:52] "GET /links/utilization HTTP/1.1" 200 684 0.000443
+(604) accepted ('172.17.0.1', 50268)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:36:58] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.774392
+(604) accepted ('172.17.0.1', 50272)
+172.17.0.1 - - [30/May/2026 10:36:59] "GET /links/utilization HTTP/1.1" 200 684 0.000446
+(604) accepted ('172.17.0.1', 50282)
+172.17.0.1 - - [30/May/2026 10:37:04] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.404674
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+(604) accepted ('172.17.0.1', 48716)
+172.17.0.1 - - [30/May/2026 10:37:05] "GET /links/utilization HTTP/1.1" 200 680 0.000371
+(604) accepted ('172.17.0.1', 48730)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:37:11] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.441184
+(604) accepted ('172.17.0.1', 50228)
+172.17.0.1 - - [30/May/2026 10:37:12] "GET /links/utilization HTTP/1.1" 200 684 0.000619
+(604) accepted ('172.17.0.1', 50232)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:37:17] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.635742
+(604) accepted ('172.17.0.1', 50246)
+172.17.0.1 - - [30/May/2026 10:37:18] "GET /links/utilization HTTP/1.1" 200 683 0.000741
+(604) accepted ('172.17.0.1', 50260)
+172.17.0.1 - - [30/May/2026 10:37:24] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.710395
+(604) accepted ('172.17.0.1', 54180)
+172.17.0.1 - - [30/May/2026 10:37:25] "GET /links/utilization HTTP/1.1" 200 688 0.000396
+(604) accepted ('172.17.0.1', 54182)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:37:31] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.804603
+(604) accepted ('172.17.0.1', 47596)
+172.17.0.1 - - [30/May/2026 10:37:32] "GET /links/utilization HTTP/1.1" 200 686 0.000520
+(604) accepted ('172.17.0.1', 47610)
+172.17.0.1 - - [30/May/2026 10:37:37] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.366265
+(604) accepted ('172.17.0.1', 47626)
+172.17.0.1 - - [30/May/2026 10:37:38] "GET /links/utilization HTTP/1.1" 200 684 0.000595
+(604) accepted ('172.17.0.1', 47638)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:37:44] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.395185
+(604) accepted ('172.17.0.1', 53760)
+172.17.0.1 - - [30/May/2026 10:37:45] "GET /links/utilization HTTP/1.1" 200 684 0.000592
+(604) accepted ('172.17.0.1', 53762)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:37:50] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.436661
+(604) accepted ('172.17.0.1', 52810)
+172.17.0.1 - - [30/May/2026 10:37:51] "GET /links/utilization HTTP/1.1" 200 684 0.000550
+(604) accepted ('172.17.0.1', 52820)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+172.17.0.1 - - [30/May/2026 10:37:57] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.728142
+(604) accepted ('172.17.0.1', 52828)
+172.17.0.1 - - [30/May/2026 10:37:58] "GET /links/utilization HTTP/1.1" 200 684 0.000979
+(604) accepted ('172.17.0.1', 52830)
+172.17.0.1 - - [30/May/2026 10:38:03] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.401921
+(604) accepted ('172.17.0.1', 53970)
+172.17.0.1 - - [30/May/2026 10:38:04] "GET /links/utilization HTTP/1.1" 200 684 0.000463
+(604) accepted ('172.17.0.1', 53984)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:38:10] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.543806
+(604) accepted ('172.17.0.1', 53988)
+172.17.0.1 - - [30/May/2026 10:38:11] "GET /links/utilization HTTP/1.1" 200 684 0.000465
+(604) accepted ('172.17.0.1', 53990)
+172.17.0.1 - - [30/May/2026 10:38:16] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.424855
+(604) accepted ('172.17.0.1', 54524)
+172.17.0.1 - - [30/May/2026 10:38:17] "GET /links/utilization HTTP/1.1" 200 682 0.000786
+(604) accepted ('172.17.0.1', 54530)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:38:23] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.360116
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+(604) accepted ('172.17.0.1', 53974)
+172.17.0.1 - - [30/May/2026 10:38:24] "GET /links/utilization HTTP/1.1" 200 684 0.000905
+(604) accepted ('172.17.0.1', 53992)
+172.17.0.1 - - [30/May/2026 10:38:29] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.436985
+(604) accepted ('172.17.0.1', 54002)
+172.17.0.1 - - [30/May/2026 10:38:30] "GET /links/utilization HTTP/1.1" 200 683 0.000646
+(604) accepted ('172.17.0.1', 54006)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+172.17.0.1 - - [30/May/2026 10:38:36] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.685129
+(604) accepted ('172.17.0.1', 57526)
+172.17.0.1 - - [30/May/2026 10:38:37] "GET /links/utilization HTTP/1.1" 200 684 0.000834
+(604) accepted ('172.17.0.1', 57530)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+172.17.0.1 - - [30/May/2026 10:38:43] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.794691
+(604) accepted ('172.17.0.1', 41336)
+172.17.0.1 - - [30/May/2026 10:38:44] "GET /links/utilization HTTP/1.1" 200 684 0.000523
+(604) accepted ('172.17.0.1', 41350)
+172.17.0.1 - - [30/May/2026 10:38:49] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.436080
+(604) accepted ('172.17.0.1', 41356)
+172.17.0.1 - - [30/May/2026 10:38:50] "GET /links/utilization HTTP/1.1" 200 683 0.000600
+(604) accepted ('172.17.0.1', 41358)
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+172.17.0.1 - - [30/May/2026 10:38:56] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.729024
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+(604) accepted ('172.17.0.1', 35060)
+172.17.0.1 - - [30/May/2026 10:38:57] "GET /links/utilization HTTP/1.1" 200 687 0.000535
+(604) accepted ('172.17.0.1', 35074)
+172.17.0.1 - - [30/May/2026 10:39:02] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.416266
+(604) accepted ('172.17.0.1', 50346)
+172.17.0.1 - - [30/May/2026 10:39:03] "GET /links/utilization HTTP/1.1" 200 686 0.000514
+(604) accepted ('172.17.0.1', 50348)
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+172.17.0.1 - - [30/May/2026 10:39:09] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.639739
+(604) accepted ('172.17.0.1', 50362)
+172.17.0.1 - - [30/May/2026 10:39:10] "GET /links/utilization HTTP/1.1" 200 686 0.000580
+(604) accepted ('172.17.0.1', 50378)
+172.17.0.1 - - [30/May/2026 10:39:15] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 286 5.402401
+(604) accepted ('172.17.0.1', 59788)
+172.17.0.1 - - [30/May/2026 10:39:16] "GET /links/utilization HTTP/1.1" 200 684 0.001009
+(604) accepted ('172.17.0.1', 59798)
+172.17.0.1 - - [30/May/2026 10:39:22] "GET /latency/G6_D1/URLLC HTTP/1.1" 200 287 5.425624
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.1] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000030: Receive ARP request from [12.0.0.1] to router port [12.0.0.2].
+[RT][INFO] switch_id=0000000000000030: Send ARP reply to [12.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [11.0.0.2] to router port [11.0.0.1].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [11.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [11.0.0.2] to router port [11.0.0.1].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [11.0.0.2]
+[RT][INFO] switch_id=0000000000000020: Receive ARP reply from [12.0.0.2] to router port [12.0.0.1].
+[RT][INFO] switch_id=0000000000000020: Receive ARP reply from [11.0.0.1] to router port [11.0.0.2].
+[RT][INFO] switch_id=0000000000000020: Receive ARP reply from [11.0.0.1] to router port [11.0.0.2].
+[RT][INFO] switch_id=0000000000000020: Receive ARP request from [12.0.0.2] to router port [12.0.0.1].
+[RT][INFO] switch_id=0000000000000020: Send ARP reply to [12.0.0.2]
+[RT][INFO] switch_id=0000000000000020: Receive ARP request from [12.0.0.2] to router port [12.0.0.1].
+[RT][INFO] switch_id=0000000000000020: Send ARP reply to [12.0.0.2]
+[RT][INFO] switch_id=0000000000000030: Receive ARP request from [14.0.0.2] to router port [14.0.0.1].
+[RT][INFO] switch_id=0000000000000030: Send ARP reply to [14.0.0.2]
+[RT][INFO] switch_id=0000000000000030: Receive ARP request from [13.0.0.2] to router port [13.0.0.1].
+[RT][INFO] switch_id=0000000000000030: Send ARP reply to [13.0.0.2]
+[RT][INFO] switch_id=0000000000000020: Receive ARP request from [11.0.0.1] to router port [11.0.0.2].
+[RT][INFO] switch_id=0000000000000020: Send ARP reply to [11.0.0.1]
+[RT][INFO] switch_id=0000000000000041: Receive ARP request from [16.0.0.2] to router port [16.0.0.1].
+[RT][INFO] switch_id=0000000000000041: Send ARP reply to [16.0.0.2]
+[RT][INFO] switch_id=0000000000000041: Receive ARP request from [14.0.0.1] to router port [14.0.0.2].
+[RT][INFO] switch_id=0000000000000041: Send ARP reply to [14.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [16.0.0.1] to router port [16.0.0.2].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [16.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [16.0.0.1] to router port [16.0.0.2].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [16.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [15.0.0.1] to router port [15.0.0.2].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [15.0.0.1]
+[RT][INFO] switch_id=0000000000000040: Receive ARP request from [15.0.0.2] to router port [15.0.0.1].
+[RT][INFO] switch_id=0000000000000040: Send ARP reply to [15.0.0.2]
+[RT][INFO] switch_id=0000000000000030: Receive ARP reply from [12.0.0.1] to router port [12.0.0.2].
+[RT][INFO] switch_id=0000000000000030: Receive ARP reply from [12.0.0.1] to router port [12.0.0.2].
+[RT][INFO] switch_id=0000000000000041: Receive ARP reply from [16.0.0.2] to router port [16.0.0.1].
+[RT][INFO] switch_id=0000000000000041: Receive ARP reply from [16.0.0.2] to router port [16.0.0.1].
+[RT][INFO] switch_id=0000000000000050: Receive ARP reply from [16.0.0.1] to router port [16.0.0.2].
+[RT][INFO] switch_id=0000000000000050: Receive ARP reply from [15.0.0.1] to router port [15.0.0.2].
+[RT][INFO] switch_id=0000000000000040: Receive ARP reply from [15.0.0.2] to router port [15.0.0.1].
+[RT][INFO] switch_id=0000000000000010: Receive ARP reply from [11.0.0.2] to router port [11.0.0.1].
+[RT][INFO] switch_id=0000000000000030: Receive ARP reply from [14.0.0.2] to router port [14.0.0.1].
+[RT][INFO] switch_id=0000000000000041: Receive ARP reply from [14.0.0.1] to router port [14.0.0.2].
+[RT][INFO] switch_id=0000000000000040: Receive ARP request from [13.0.0.1] to router port [13.0.0.2].
+[RT][INFO] switch_id=0000000000000040: Send ARP reply to [13.0.0.1]
+[RT][INFO] switch_id=0000000000000030: Receive ARP reply from [13.0.0.2] to router port [13.0.0.1].
+[RT][INFO] switch_id=0000000000000040: Receive ARP reply from [13.0.0.1] to router port [13.0.0.2].
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.3] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.3]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.2] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.2]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.1] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.1]
+[RT][INFO] switch_id=0000000000000010: Set implicit routing flow [cookie=0x1]
+[RT][INFO] switch_id=0000000000000010: Receive ARP request from [10.0.0.3] to router port [10.0.0.254].
+[RT][INFO] switch_id=0000000000000010: Send ARP reply to [10.0.0.3]
+[RT][INFO] switch_id=0000000000000050: Set implicit routing flow [cookie=0x3]
+[RT][INFO] switch_id=0000000000000050: Receive ARP request from [20.0.0.2] to router port [20.0.0.254].
+[RT][INFO] switch_id=0000000000000050: Send ARP reply to [20.0.0.2]
+
+MININET:
+
+netadmin@mininet-ryu:~$ sudo docker exec -it debc86f1904f bash
+[sudo] password for netadmin:
+root@debc86f1904f:~# mn --custom ~/6g-lab/6G_Topo.py \
+> --topo 6gtopo \
+> --controller=remote,ip=127.0.0.1,port=6633 \
+> --switch=ovs,protocols=OpenFlow13
+*** Error setting resource limits. Mininet's performance may be affected.
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+G6_D1 G6_D2 G6_IOT_D MNR_D MNR_SVR URLLC eMBB mMTC
+*** Adding switches:
+RAN agg core lf1 sp1 sp2
+*** Adding links:
+(G6_D1, RAN) (G6_D2, RAN) (G6_IOT_D, RAN) (MNR_D, RAN) (MNR_SVR, lf1) (RAN, agg) (URLLC, lf1) (agg, core) (core, sp1) (core, sp2) (eMBB, lf1) (mMTC, lf1) (sp1, lf1) (sp2, lf1)
+*** Configuring hosts
+G6_D1 G6_D2 G6_IOT_D MNR_D MNR_SVR URLLC eMBB mMTC
+*** Starting controller
+c0
+*** Starting 6 switches
+RAN agg core lf1 sp1 sp2 ...
+*** Starting CLI:
+mininet> G6_D1 ip route add default via 10.0.0.254
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: Gip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: 6ip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: _ip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: D2: command not found
+bash: G6_IOT_D: command not found
+bash: Mip: command not found
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+bash: Nip: command not found
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+bash: R_D: command not found
+bash: URLLC: command not found
+bash: eMBB: command not found
+bash: mMTC: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+mininet> eMBB ip route add default via 20.0.0.254
+mininet> mMTC ip route add default via 20.0.0.254
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: Mip: command not found
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: Bip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: Bip: command not found
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+RTNETLINK answers: File exists
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+bash: iip: command not found
+mininet> eMBB ip route add default via 20.0.0.254
+G6_D1 ip route add default via 10.0.0.254^JG6_D2 ip route add default via 10.0.0.254^JG6_IOT_D ip route add default via 10.0.0.254^J^JMNR_D ip route add default via 17.0.0.254^J^JURLLC ip route add default via 20.0.0.254^JeMBB ip route add default via 20.0.0.254^JmMTC ip route add default via 20.0.0.254^J^JMNR_SVR ip route add default via 18.0.0.254^JG6_D1 ip route add default via 10.0.0.254^JG6_D2 ip route add default via 11.0.0.254^JG6_IOT_D ip route add default via 17.0.0.254^JURLLC ip route add default via 20.0.0.254^JMNR_D ip route add default via 12.0.0.25 ^JMNR_SVR ip route add default via 18.0.0.254G6_D1 ip route add default via 10.0.0.254^JG6_D2 ip route add default via 10.0.0.254^JG6_IOT_D ip route add default via 10.0.0.254^J^JMNR_D ip route add default via 17.0.0.254^J^JURLLC ip route add default via 20.0.0.254^JeMBB ip route add default via 20.0.0.254^JmMTC ip route add default via 20.0.0.254^J^JMNR_SVR ip route add default via 18.0.0.254^JG6_D1 ip route add default via 10.0.0.254^JG6_D2 ip route add default via 11.0.0.254^JG6_IOT_D ip route add default via 17.0.0.254^JURLLC ip route add default via 20.0.0.254^JMNR_D ip route add default via 12.0.0.25 ^JMNR_SVR ip route add default via 18.0.0.254G6_D1 ip route add default via 10.0.0.254^JG6_D2 ip route add default via 10.0.0.254^JG6_IOT_D ip route add default via 10.0.0.254^J^JMNR_D ip route add default via 17.0.0.254^J^JURLLC ip route add default via 20.0.0.254^JeMBB ip route add default via 20.0.0.254^JmMTC ip route add default via 20.0.0.254^J^JMNR_SVR ip route add default via 18.0.0.254^JG6_D1 ip route add default via 10.0.0.254^JG6_D2 ip route add default via 11.0.0.254^JG6_IOT_D ip route add default via 17.0.0.254^JURLLC ip route add default via 20.0.0.254^JMNR_D ip route add default via 12.0.0.25 ^JMNR_SVR ip route add default via 18.0.0.254ERROR: unknown command "route"
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: 6ip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: _D2: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+ERROR: unknown command "route"
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: 6ip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: _ip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: MNR_D: command not found
+bash: URLLC: command not found
+bash: eMBB: command not found
+bash: mMTC: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+RTNETLINK answers: File exists
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+Usage: inet_route [-vF] del {-host|-net} Target[/prefix] [gw Gw] [metric M] [[dev] If]
+       inet_route [-vF] add {-host|-net} Target[/prefix] [gw Gw] [metric M]
+                              [netmask N] [mss Mss] [window W] [irtt I]
+                              [mod] [dyn] [reinstate] [[dev] If]
+       inet_route [-vF] add {-host|-net} Target[/prefix] [metric M] reject
+       inet_route [-FC] flush      NOT supported
+bash: G6_IOT_D: command not found
+bash: MNR_D: command not found
+bash: URLLC: command not found
+bash: eMBB: command not found
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+bash: eip: command not found
+mininet> eMBB ip route add default via 20.0.0.254
+bash: fault: command not found
+bash: mMTC: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: MNR_D: command not found
+bash: URLLC: command not found
+bash: eMBB: command not found
+bash: mMTC: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+bash: G6_D2: command not found
+bash: G6mininet> mMTC ip route add default via 20.0.0.254
+Usage: inet_route [-vF] del {-host|-net} Target[/prefix] [gw Gw] [metric M] [[dev] If]
+       inet_route [-vF] add {-host|-net} Target[/prefix] [gw Gw] [metric M]
+                              [netmask N] [mss Mss] [window W] [irtt I]
+                              [mod] [dyn] [reinstate] [[dev] If]
+       inet_route [-vF] add {-host|-net} Target[/prefix] [metric M] reject
+       inet_route [-FC] flush      NOT supported
+bash: mMTC: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+mininet>
+mininet> MNR_SVR ip route add default via 18.0.0.254
+mininet> MNR_SVR ip route add default via 18.0.0.254
+bash: p: command not found
+bash: URLLC: command not found
+bash: eMBB: command not found
+bash: mMTC: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: Mip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: Nip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: Rip: command not found
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+bash: _ip: command not found
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+bash: Dip: command not found
+mininet> eMBB ip route add default via 20.0.0.254
+_IOT_D: command not found
+bash: MNR_D: command not found
+bash: URLLC: command not found
+bash: eMBB: command not found
+bash: mMTC: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+RTNETLINK answers: File exists
+mininet> mMTC ip route add default via 20.0.0.254
+RTNETLINK answers: File exists
+bash: iip: command not found
+mininet>
+mininet> MNR_SVR ip route add default via 18.0.0.254
+RTNETLINK answers: File exists
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: 6ip: command not found
+mininet> G6_D2 ip route add default via 11.0.0.254
+bash: _ip: command not found
+mininet> G6_IOT_D ip route add default via 17.0.0.254
+bash: Dip: command not found
+mininet> URLLC ip route add default via 20.0.0.254
+RTNETLINK answers: File exists
+mininet> MNR_D ip route add default via 12.0.0.25
+bash: 1ip: command not found
+mininet> MNR_SVR ip route add default via 18.0.0.254
+Usage: inet_route [-vF] del {-host|-net} Target[/prefix] [gw Gw] [metric M] [[dev] If]
+       inet_route [-vF] add {-host|-net} Target[/prefix] [gw Gw] [metric M]
+                              [netmask N] [mss Mss] [window W] [irtt I]
+                              [mod] [dyn] [reinstate] [[dev] If]
+       inet_route [-vF] add {-host|-net} Target[/prefix] [metric M] reject
+       inet_route [-FC] flush      NOT supported
+mininet> MNR_SVR ip route add default via 18.0.0.254
+RTNETLINK answers: File exists
+mininet> MNR_SVR ip route add default via 18.0.0.254
+RTNETLINK answers: File exists
+mininet> exit
+*** Stopping 1 controllers
+c0
+*** Stopping 14 links
+..............
+*** Stopping 6 switches
+RAN agg core lf1 sp1 sp2
+*** Stopping 8 hosts
+G6_D1 G6_D2 G6_IOT_D MNR_D MNR_SVR URLLC eMBB mMTC
+*** Done
+completed in 349.104 seconds
+root@debc86f1904f:~# mn --custom ~/6g-lab/6G_Topo.py --topo 6gtopo --controller=remote,ip=127.0.0.1,port=6633 --switch=ovs,protocols=OpenFlow13
+*** Error setting resource limits. Mininet's performance may be affected.
+*** Creating network
+*** Adding controller
+*** Adding hosts:
+G6_D1 G6_D2 G6_IOT_D MNR_D MNR_SVR URLLC eMBB mMTC
+*** Adding switches:
+RAN agg core lf1 sp1 sp2
+*** Adding links:
+(G6_D1, RAN) (G6_D2, RAN) (G6_IOT_D, RAN) (MNR_D, RAN) (MNR_SVR, lf1) (RAN, agg) (URLLC, lf1) (agg, core) (core, sp1) (core, sp2) (eMBB, lf1) (mMTC, lf1) (sp1, lf1) (sp2, lf1)
+*** Configuring hosts
+G6_D1 G6_D2 G6_IOT_D MNR_D MNR_SVR URLLC eMBB mMTC
+*** Starting controller
+c0
+*** Starting 6 switches
+RAN agg core lf1 sp1 sp2 ...
+*** Starting CLI:
+mininet> G6_D1 ip route add default via 10.0.0.254
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: Gip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+mininet> eMBB ip route add default via 20.0.0.254
+mininet> mMTC ip route add default via 20.0.0.254
+mininet>
+mininet> MNR_SVR ip route add default via 18.0.0.254
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: 6ip: command not found
+mininet> G6_D2 ip route add default via 11.0.0.254
+bash: _ip: command not found
+mininet> G6_IOT_D ip route add default via 17.0.0.254
+bash: D2: command not found
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: 2ip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: 5ip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: 4: command not found
+bash: G6_IOT_D: command not found
+bash: MNR_D: command not found
+bash: URLLC: command not found
+bash: eMBB: command not found
+bash: mMTC: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+bash: .ip: command not found
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+bash: 0ip: command not found
+mininet> eMBB ip route add default via 20.0.0.254
+bash: .ip: command not found
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: Rip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: Lip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: MNR_SVR: command not found
+bash: Lip: command not found
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+bash: Cip: command not found
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+RTNETLINK answers: File exists
+mininet> eMBB ip route add default via 20.0.0.254
+RTNETLINK answers: File exists
+bash: MNR_D: command not found
+bash: MNR_SVR: command not foundmininet> mMTC ip route add default via 20.0.0.254
+bash: 0ip: command not found
+mininet>
+mininet> MNR_SVR ip route add default via 18.0.0.254
+bash: .ip: command not found
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: Mip: command not found
+mininet> G6_D2 ip route add default via 11.0.0.254
+bash: TCip: command not found
+mininet> G6_IOT_D ip route add default via 17.0.0.254
+RTNETLINK answers: Network is unreachable
+mininet> URLLC ip route add default via 20.0.0.254
+ERROR: unknown command "route"
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: uip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: tip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: eip: command not found
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+bash: iip: command not found
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+bash: add: command not found
+bash: MNR_SVR: command not found
+bash: G6_D1: command not found
+bash: G6_D2: command not found
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+mininet> eMBB ip route add default via 20.0.0.254
+
+RTNETLINK answers: File exists
+mininet> mMTC ip route add default via 20.0.0.254
+bash: rip: command not found
+mininet>
+mininet> MNR_SVR ip route add default via 18.0.0.254
+bash: oip: command not found
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: Nip: command not found
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: oute: command not found
+bash: MNR_SVR: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: R_ip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: Dip: command not found
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+RTNETLINK answers: File exists
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+bash: iip: command not found
+mininet> eMBB ip route add default via 20.0.0.254
+ERROR: unknown command "route"
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: 6ip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: _ip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: Dip: command not found
+mininet>
+mininet> MNR_D ip route add default via 17.0.0.254
+bash: 2ip: command not found
+mininet>
+mininet> URLLC ip route add default via 20.0.0.254
+RTNETLINK answers: File exists
+mininet> eMBB ip route add default via 20.0.0.254
+RTNETLINK answers: Network is unreachable
+bash: G6_IOT_D: command not found
+bash: URLLC: command not found
+bash: MNR_D: command not found
+bash: MNR_SVR: command not found
+mininet> mMTC ip route add default via 20.0.0.254
+RTNETLINK answers: File exists
+mininet>
+mininet> MNR_SVR ip route add default via 18.0.0.254
+bash: rip: command not found
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: Mip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: Tip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+bash: Cip: command not found
+mininet> G6_IOT_D ip route add default via 10.0.0.254
+RTNETLINK answers: File exists
+mininet> G6_D2 ip route add default via 10.0.0.254
+bash: _ip: command not found
+mininet> G6_D2 ip route add default via 10.0.0.254
+RTNETLINK answers: File exists
+mininet> G6_D1 ip route add default via 10.0.0.254
+bash: 6ip: command not found
+mininet> G6_D1 ip route add default via 10.0.0.254
+RTNETLINK answers: File exists
+mininet> URLLC pkill -f iperf
+bash: ipkill: command not found
+mininet> URLLC iperf -s -u -p 5001 -i 1 &
+bash: Diperf: command not found
+mininet> URLLC iperf -s -u -p 5002 -i 1 &
+bash: 1iperf: command not found
+mininet> URLLC iperf -s -u -p 5003 -i 1 &
+mininet> URLLC iperf -s -u -p 5001 -i 1 &
+------------------------------------------------------------
+Server listening on UDP port 5003
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+------------------------------------------------------------
+Server listening on UDP port 5001
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+mininet> URLLC iperf -s -u -p 5002 -i 1 &
+mininet> URLLC iperf -s -u -p 5002 -i 1 &
+------------------------------------------------------------
+Server listening on UDP port 5002
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+mininet> URLLC iperf -s -u -p 5003 -i 1 &
+------------------------------------------------------------
+Server listening on UDP port 5002
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+------------------------------------------------------------
+Server listening on UDP port 5003
+Receiving 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+mininet> G6_D1 iperf -c 20.0.0.1 -u -p 5001 -b 15M -t 10800 &
+mininet> G6_D2 iperf -c 20.0.0.2 -u -p 5002 -b 8M -t 10800 &
+------------------------------------------------------------
+Client connecting to 20.0.0.2, UDP port 5002
+Sending 1470 byte datagrams
+UDP buffer size:  208 KByte (default)
+------------------------------------------------------------
+[  3] local 10.0.0.2 port 53169 connected with 20.0.0.2 port 5002
+mininet> G6_IOT_D iperf -c 20.0.0.3 -u -p 5003 -b 5M -t 10800 &
+mininet>
+
+
+AI LAYER:
+
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ curl -s http://localhost:8080/links/utilization
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ curl -s http://localhost:8080/latency/G6_D1/URLLC
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$ python3 evaluate.py --config prod.json --model-path models/dqn_model_live.pth --metrics-path logs/eval_results.json --skip-setup
+dqn Episode 1/10 | Reward: -64.2890 | Steps: 15
+dqn Episode 2/10 | Reward: -64.2591 | Steps: 15
+dqn Episode 3/10 | Reward: -64.2684 | Steps: 15
+dqn Episode 4/10 | Reward: -64.3007 | Steps: 15
+dqn Episode 5/10 | Reward: -64.2788 | Steps: 15
+dqn Episode 6/10 | Reward: -64.2736 | Steps: 15
+dqn Episode 7/10 | Reward: -64.2776 | Steps: 15
+dqn Episode 8/10 | Reward: -64.2436 | Steps: 15
+dqn Episode 9/10 | Reward: -64.2069 | Steps: 15
+dqn Episode 10/10 | Reward: -64.2954 | Steps: 15
+random Episode 1/10 | Reward: -63.9140 | Steps: 15
+random Episode 2/10 | Reward: -65.7171 | Steps: 15
+random Episode 3/10 | Reward: -63.4164 | Steps: 15
+random Episode 4/10 | Reward: -63.8062 | Steps: 15
+random Episode 5/10 | Reward: -64.9906 | Steps: 15
+random Episode 6/10 | Reward: -64.4932 | Steps: 15
+random Episode 7/10 | Reward: -65.2870 | Steps: 15
+random Episode 8/10 | Reward: -65.9236 | Steps: 15
+random Episode 9/10 | Reward: -66.1128 | Steps: 15
+random Episode 10/10 | Reward: -63.9083 | Steps: 15
+do_nothing Episode 1/10 | Reward: -67.3312 | Steps: 15
+do_nothing Episode 2/10 | Reward: -67.3297 | Steps: 15
+do_nothing Episode 3/10 | Reward: -67.3266 | Steps: 15
+do_nothing Episode 4/10 | Reward: -67.3297 | Steps: 15
+do_nothing Episode 5/10 | Reward: -67.3301 | Steps: 15
+do_nothing Episode 6/10 | Reward: -67.3316 | Steps: 15
+do_nothing Episode 7/10 | Reward: -67.3322 | Steps: 15
+do_nothing Episode 8/10 | Reward: -67.3365 | Steps: 15
+do_nothing Episode 9/10 | Reward: -67.3302 | Steps: 15
+do_nothing Episode 10/10 | Reward: -67.3169 | Steps: 15
+
+Evaluation Summary
+DQN -> AvgReward: -64.2693 | Range: [-64.3007, -64.2069] | AvgSteps: 15.00
+DQN Action counts: {'0': 0, '1': 150, '2': 0, '3': 0}
+DQN switch_rate=0.000 | dominant_action_ratio=1.000 | latency_proxy=1.0000 | loss_proxy=0.0000 | throughput_proxy=0.9842 | failover_active_rate=0.000 | congestion_hit_rate=1.000
+DQN Avg reward components: {'latency_penalty': -2.5, 'packet_loss_penalty': 0.0, 'utilization_penalty': -1.1695982425819829, 'throughput_bonus': 1.476310002207756, 'congestion_penalty': -2.0, 'failover_penalty': 0.0, 'total_unclipped': -4.193288240374225, 'total': -4.284621572435994, 'action_repeat_penalty': -0.0933333333333331, 'outcome_improvement_bonus': 0.002000001271565755}
+random -> AvgReward: -64.7569 | Range: [-66.1128, -63.4164] | AvgSteps: 15.00
+random Action counts: {'0': 34, '1': 46, '2': 34, '3': 36}
+do_nothing -> AvgReward: -67.3295 | Range: [-67.3365, -67.3169] | AvgSteps: 15.00
+do_nothing Action counts: {'0': 150, '1': 0, '2': 0, '3': 0}
+Saved metrics to logs/eval_results.json
+(venv) netadmin@mininet-ryu:~/Closed-Loop-Intented-Based_Network$

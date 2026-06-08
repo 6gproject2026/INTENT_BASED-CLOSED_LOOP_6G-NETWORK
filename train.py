@@ -136,7 +136,10 @@ def main():
             if global_step % target_update_frequency == 0:
                 agent.update_target_network()
 
-        agent.decay_epsilon()
+            # Decay exploration per environment step so epsilon anneals smoothly
+            # across the whole training budget rather than once per episode.
+            agent.decay_epsilon()
+
         reward_history.append(episode_reward)
 
         avg_reward = sum(reward_history[-20:]) / min(len(reward_history), 20)
