@@ -29,6 +29,12 @@ class RyuClient:
         self.timeout = config.get("timeout_seconds", 5)
         self.retries = config.get("retry_attempts", 3)
         self.retry_delay = config.get("retry_delay_seconds", 1)
+        # Retries use capped exponential backoff. Kept deliberately short: this
+        # rides out a brief blip, while a full controller restart is handled by
+        # wait_for_controller() at the training-loop level.
+        self.backoff_max = config.get("retry_backoff_max_seconds", 8)
+        self.reconnect_max_wait = config.get("reconnect_max_wait_seconds", 180)
+        self.reconnect_poll = config.get("reconnect_poll_seconds", 5)
 
     # ------------------------------------------------------------------ #
     #  Internal helpers
@@ -60,18 +66,28 @@ class RyuClient:
                 logger.warning("Connection failed (attempt %d/%d): %s", attempt, self.retries, exc)
                 if attempt == self.retries:
                     raise RyuConnectionError(f"Cannot reach Ryu at {url}") from exc
-                time.sleep(self.retry_delay)
+                time.sleep(self._backoff_delay(attempt))
 
             except requests.Timeout as exc:
                 logger.warning("Request timed out (attempt %d/%d): %s", attempt, self.retries, exc)
                 if attempt == self.retries:
                     raise RyuConnectionError(f"Timeout reaching Ryu at {url}") from exc
-                time.sleep(self.retry_delay)
+                time.sleep(self._backoff_delay(attempt))
 
             except requests.HTTPError as exc:
                 raise RyuResponseError(
                     f"{method} {url} returned {resp.status_code}: {resp.text}"
                 ) from exc
+
+        # Only reachable when retry_attempts < 1, which would otherwise return None
+        # and surface as a confusing TypeError far from the real cause.
+        raise RyuConnectionError(
+            f"No request attempted for {url}: retry_attempts={self.retries}"
+        )
+
+    def _backoff_delay(self, attempt: int) -> float:
+        """Capped exponential backoff: retry_delay * 2^(attempt-1), clamped to backoff_max."""
+        return min(self.retry_delay * (2 ** (attempt - 1)), self.backoff_max)
 
     @staticmethod
     def _normalize_dpid(dpid: str) -> str:
@@ -107,6 +123,20 @@ class RyuClient:
     def get_link_utilization(self) -> dict:
         """GET /links/utilization  →  per-link tx_mbps statistics."""
         return self._request("GET", "/links/utilization")
+
+    def ping(self) -> bool:
+        """Single-shot reachability check. Returns True/False, never raises.
+
+        Deliberately bypasses _request()'s retry loop: callers poll this on their
+        own schedule, so an internal retry budget would stack delays on top of theirs.
+        """
+        try:
+            resp = requests.get(
+                f"{self.base_url}/links/utilization", timeout=self.timeout
+            )
+            return resp.status_code < 500
+        except requests.RequestException:
+            return False
 
     def get_latency(self, src: str, dst: str) -> dict:
         """GET /latency/{src}/{dst}  →  latency/loss for a monitored pair."""
@@ -182,3 +212,43 @@ class RyuClient:
     def reset_network(self) -> dict:
         """POST /network/reset  →  reset network state."""
         return self._request("POST", "/network/reset")
+
+
+# ---------------------------------------------------------------------- #
+#  Controller availability
+# ---------------------------------------------------------------------- #
+
+def wait_for_controller(client: RyuClient, max_wait_seconds=None, poll_seconds=None) -> bool:
+    """Poll the controller until it answers or the budget expires.
+
+    Used both as a pre-run preflight (fail fast instead of dying mid-training) and
+    to ride out a controller restart without losing the run. Returns True as soon
+    as the controller responds, False if max_wait_seconds elapses.
+    """
+    if max_wait_seconds is None:
+        max_wait_seconds = client.reconnect_max_wait
+    if poll_seconds is None:
+        poll_seconds = client.reconnect_poll
+
+    deadline = time.monotonic() + max_wait_seconds
+    attempt = 0
+    while True:
+        attempt += 1
+        if client.ping():
+            if attempt > 1:
+                logger.info("Controller reachable again after %d attempt(s)", attempt)
+            return True
+
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            logger.error(
+                "Controller still unreachable at %s after %ss",
+                client.base_url, max_wait_seconds,
+            )
+            return False
+
+        logger.warning(
+            "Controller unreachable (attempt %d), retrying in %ss (%.0fs budget left)",
+            attempt, poll_seconds, remaining,
+        )
+        time.sleep(min(poll_seconds, remaining))

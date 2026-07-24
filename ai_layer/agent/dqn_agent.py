@@ -99,5 +99,11 @@ class DQNAgent:
 		self.target_network.load_state_dict(self.q_network.state_dict())
 
 	def decay_epsilon(self) -> None:
-		"""Decay epsilon once per episode to preserve exploration longer."""
+		"""Decay epsilon one step toward epsilon_min.
+
+		train.py calls this once per environment *step*, not per episode, so
+		epsilon_decay is coupled to num_episodes * max_steps: reaching epsilon_min
+		takes log(epsilon_min) / log(epsilon_decay) steps. Changing the episode
+		budget without retuning epsilon_decay leaves the agent stuck exploring.
+		"""
 		self.epsilon = max(self.epsilon_min, self.epsilon * self.epsilon_decay)

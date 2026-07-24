@@ -19,6 +19,7 @@ python clint_test.py
 # Train
 python train.py --config prod.json --model-path models/dqn_model_live.pth
 python train.py --config prod.json --skip-setup --seed 42    # skip startup setup
+python train.py --config prod.json --resume models/train_state.pth   # continue after a controller outage
 
 # Evaluate
 python evaluate.py --config prod.json --model-path models/dqn_model_live.pth
@@ -95,6 +96,8 @@ Episodes are **truncated** at `environment.episode.max_steps`; `terminated` is a
 - **Controller unreachable**: update `environment.ryu_controller.base_url` in `prod.json` (default `http://172.17.0.2:8080`).
 - **Latency returns null**: add default routes in Mininet host namespaces (`mnexec -a <pid> ip route add default via <gw>`).
 - **qos_rest_router KeyError**: Mininet was started after Ryu — restart Ryu after Mininet is fully up.
+- **`Address already in use` on ryu-manager start**: a stale controller still holds port 8080. Clear it before restarting: `fuser -k 8080/tcp` (or `kill $(lsof -t -i:8080)`), confirm with `ss -lntp | grep 8080`, then start `ryu-manager`. A Ryu restart also wipes the routing/QoS baseline — re-run `setup_network.py` (training does this automatically on reconnect).
+- **Controller dies mid-training**: `train.py` saves `models/train_state.pth` every episode and waits `reconnect_max_wait_seconds` (default 180s) for the controller to return, re-applying startup setup before continuing. If it stays down, resume with `python train.py --config prod.json --resume models/train_state.pth`. Capture the cause by running the controller as `ryu-manager <apps> > /tmp/ryu.log 2>&1`.
 - **Long training killed on disconnect**: run inside `tmux`/`screen` or use `nohup`.
 - **Mininet `py` commands**: Mininet uses Python 2.7; use `execfile('/root/script.py', {'net': net})` instead of `exec(open(...))`.
 

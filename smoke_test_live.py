@@ -19,11 +19,11 @@ Run from the AI_Layer/ directory:  python smoke_test_live.py
 import json
 import sys
 
-from ai_layer.network_interface.ryu_client import RyuClient, RyuClientError
+from ai_layer.network_interface.ryu_client import RyuClient, wait_for_controller
 from intent_layer import IntentTranslator
 
 CONFIG_PATH = "prod.json"
-PREFLIGHT_ATTEMPTS = 2  # do not retry the controller indefinitely
+PREFLIGHT_WAIT_SECONDS = 10  # do not retry the controller indefinitely
 
 
 def load_translator():
@@ -33,17 +33,6 @@ def load_translator():
     ryu_cfg = cfg["environment"]["ryu_controller"]
     ryu = RyuClient(ryu_cfg)               # base_url comes from config, not hardcoded
     return IntentTranslator(ryu), ryu, ryu_cfg["base_url"]
-
-
-def preflight(ryu, attempts=PREFLIGHT_ATTEMPTS):
-    """Confirm the controller is reachable. Returns True/False; no infinite retry."""
-    for i in range(1, attempts + 1):
-        try:
-            ryu.get_link_utilization()
-            return True
-        except RyuClientError as exc:
-            print(f"[preflight {i}/{attempts}] controller unreachable: {exc}")
-    return False
 
 
 def _value_is_present(val) -> bool:
@@ -89,9 +78,9 @@ def main() -> int:
     translator, ryu, base_url = load_translator()
     print(f"Live intent-layer smoke test against Ryu at {base_url}")
 
-    if not preflight(ryu):
-        print(f"\nABORT: Ryu controller unreachable after {PREFLIGHT_ATTEMPTS} "
-              f"attempts. Ensure Mininet and the Ryu controller are running.")
+    if not wait_for_controller(ryu, max_wait_seconds=PREFLIGHT_WAIT_SECONDS):
+        print(f"\nABORT: Ryu controller unreachable after {PREFLIGHT_WAIT_SECONDS}s. "
+              f"Ensure Mininet and the Ryu controller are running.")
         return 1
 
     # Steps 1 & 2 — read-only intents.
