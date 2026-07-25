@@ -6,8 +6,11 @@
     "ryu_controller": {
       "base_url": "http://172.17.0.2:8080",
       "timeout_seconds": 15,
-      "retry_attempts": 5,
-      "retry_delay_seconds": 1
+      "retry_attempts": 6,
+      "retry_delay_seconds": 1,
+      "retry_backoff_max_seconds": 8,
+      "reconnect_max_wait_seconds": 180,
+      "reconnect_poll_seconds": 5
     },
     "network": {
       "switch_dpid": "48",
@@ -510,7 +513,7 @@
       "gamma": 0.99,
       "epsilon_start": 1.0,
       "epsilon_end": 0.01,
-      "epsilon_decay": 0.9996,
+      "epsilon_decay": 0.9991,
       "batch_size": 64,
       "target_update_frequency": 100
     },
@@ -525,7 +528,7 @@
     "loss_function": "MSE"
   },
   "training": {
-    "num_episodes": 300,
+    "num_episodes": 100,
     "warmup_steps": 200,
     "evaluation_frequency": 10,
     "save_frequency": 25,

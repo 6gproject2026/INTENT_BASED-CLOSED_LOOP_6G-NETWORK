@@ -10,7 +10,12 @@ import torch
 
 from ai_layer.agent.dqn_agent import DQNAgent
 from ai_layer.environments.sdn_env import SDNEnv
+from ai_layer.network_interface.ryu_client import RyuConnectionError, wait_for_controller
 from ai_layer.network_setup import NetworkInitializer
+
+# Evaluation runs are short, so a dead controller should fail fast rather than
+# waiting it out the way training does.
+PREFLIGHT_WAIT_SECONDS = 10
 
 
 def build_environment(config: dict):
@@ -201,15 +206,23 @@ def main():
     with open(args.config, "r", encoding="utf-8") as f:
         config = json.load(f)
 
-    run_setup = bool(config.get("evaluation", {}).get("run_startup_setup", False)) and not bool(args.skip_setup)
-    if run_setup:
-        summary = NetworkInitializer(config).initialize()
-        print(f"Startup setup completed: {summary.as_dict()}")
-
     seed = int(args.seed) if args.seed is not None else int(config.get("system", {}).get("random_seed", 42))
     set_seed(seed)
 
     env = build_environment(config)
+
+    if not wait_for_controller(env.client, max_wait_seconds=PREFLIGHT_WAIT_SECONDS):
+        print(
+            f"ABORT: Ryu controller unreachable at {env.client.base_url}.\n"
+            "Start Mininet and ryu-manager, then retry. If a stale controller is\n"
+            "still holding the port, clear it first: fuser -k 8080/tcp"
+        )
+        return 1
+
+    run_setup = bool(config.get("evaluation", {}).get("run_startup_setup", False)) and not bool(args.skip_setup)
+    if run_setup:
+        summary = NetworkInitializer(config).initialize()
+        print(f"Startup setup completed: {summary.as_dict()}")
     eval_cfg = config.get("evaluation", {})
     agent_cfg = config["agent"]
     nn_cfg = agent_cfg["neural_network"]
@@ -254,42 +267,53 @@ def main():
         .get("threshold", 0.9)
     )
 
-    dqn_metrics = run_policy(
-        env=env,
-        policy_name="dqn",
-        num_episodes=num_episodes,
-        action_fn=lambda s: agent.select_action(s),
-        base_seed=seed,
-        congestion_threshold=congestion_threshold,
-        render=render,
-    )
-
-    baseline_cfg = eval_cfg.get("baseline_policies", [])
     baseline_results = []
-    for baseline in baseline_cfg:
-        name = str(baseline.get("name", "")).lower()
-        if name == "random":
-            result = run_policy(
-                env=env,
-                policy_name="random",
-                num_episodes=num_episodes,
-                action_fn=lambda _s: env.action_space.sample(),
-                base_seed=seed,
-                congestion_threshold=congestion_threshold,
-                render=False,
-            )
-            baseline_results.append(result)
-        elif name == "do_nothing":
-            result = run_policy(
-                env=env,
-                policy_name="do_nothing",
-                num_episodes=num_episodes,
-                action_fn=lambda _s: 0,
-                base_seed=seed,
-                congestion_threshold=congestion_threshold,
-                render=False,
-            )
-            baseline_results.append(result)
+    try:
+        dqn_metrics = run_policy(
+            env=env,
+            policy_name="dqn",
+            num_episodes=num_episodes,
+            action_fn=lambda s: agent.select_action(s),
+            base_seed=seed,
+            congestion_threshold=congestion_threshold,
+            render=render,
+        )
+
+        baseline_cfg = eval_cfg.get("baseline_policies", [])
+        for baseline in baseline_cfg:
+            name = str(baseline.get("name", "")).lower()
+            if name == "random":
+                result = run_policy(
+                    env=env,
+                    policy_name="random",
+                    num_episodes=num_episodes,
+                    action_fn=lambda _s: env.action_space.sample(),
+                    base_seed=seed,
+                    congestion_threshold=congestion_threshold,
+                    render=False,
+                )
+                baseline_results.append(result)
+            elif name == "do_nothing":
+                result = run_policy(
+                    env=env,
+                    policy_name="do_nothing",
+                    num_episodes=num_episodes,
+                    action_fn=lambda _s: 0,
+                    base_seed=seed,
+                    congestion_threshold=congestion_threshold,
+                    render=False,
+                )
+                baseline_results.append(result)
+    except RyuConnectionError as exc:
+        # Evaluation is short and its numbers are only meaningful over a full run,
+        # so bail out rather than reporting metrics from a half-dead network.
+        print(f"\nABORT: controller lost during evaluation: {exc}")
+        print(
+            "Restart it, clearing any stale listener first:\n"
+            "    fuser -k 8080/tcp && ss -lntp | grep 8080\n"
+            "then re-run this evaluation."
+        )
+        return 1
 
     metrics = {
         "num_episodes": num_episodes,
@@ -334,7 +358,8 @@ def main():
         print(f"{baseline['policy']} Action counts: {baseline['action_counts']}")
 
     print(f"Saved metrics to {metrics_path}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
