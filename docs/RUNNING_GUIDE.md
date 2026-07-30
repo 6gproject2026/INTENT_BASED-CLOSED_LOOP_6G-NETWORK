@@ -69,21 +69,32 @@ Order matters. Starting Ryu before Mininet causes `qos_rest_router` `KeyError` c
 # 1. Start Mininet FIRST and let the topology fully come up.
 #    Wait until all switches/hosts are listed and pingable.
 
-# 2. THEN start Ryu, capturing its log (needed for post-mortem diagnosis):
-ryu-manager <your apps> > /tmp/ryu.log 2>&1 &
+# 2. Copy the custom apps into the container (ryu-manager loads them by bare
+#    relative path, so they must sit in its working directory, /root):
+docker cp ryu_apps/network6G_monitor.py <container>:/root/
+docker cp ryu_apps/ovs_utilization.py   <container>:/root/
 
-# 3. Verify the controller answers before doing anything else:
+# 3. THEN start Ryu, capturing its log (needed for post-mortem diagnosis).
+#    `tee -a` appends; bare `tee` or `>` truncates the log on every restart.
+ryu-manager --observe-links \
+  ryu.app.rest_qos ryu.app.rest_conf_switch ryu.app.qos_rest_router \
+  ryu.app.rest_topology ryu.app.ofctl_rest \
+  network6G_monitor.py ovs_utilization.py 2>&1 | tee -a /tmp/ryu.log &
+
+# 4. Verify the controller answers before doing anything else.
+#    /links/utilization and /latency come from the two ryu_apps/ files above —
+#    if they 404, the copy in step 2 did not land in the container's /root.
 curl http://172.17.0.2:8080/stats/switches
 curl http://172.17.0.2:8080/links/utilization
 curl http://172.17.0.2:8080/latency/G6_D1/URLLC
 
-# 4. One-time network setup (routing + baseline QoS):
+# 5. One-time network setup (routing + baseline QoS):
 python setup_network.py --config prod.json
 
-# 5. Smoke test the AI layer end-to-end:
+# 6. Smoke test the AI layer end-to-end:
 python clint_test.py
 
-# 6. Train:
+# 7. Train:
 python train.py --config prod.json --model-path models/dqn_model_live.pth
 ```
 
@@ -97,7 +108,10 @@ A Ryu restart **wipes the routing and QoS baseline**. After any restart you must
 ```bash
 fuser -k 8080/tcp          # clear the stale listener FIRST
 ss -lntp | grep 8080       # must print nothing
-ryu-manager <apps> > /tmp/ryu.log 2>&1 &
+ryu-manager --observe-links \
+  ryu.app.rest_qos ryu.app.rest_conf_switch ryu.app.qos_rest_router \
+  ryu.app.rest_topology ryu.app.ofctl_rest \
+  network6G_monitor.py ovs_utilization.py 2>&1 | tee -a /tmp/ryu.log &
 python setup_network.py --config prod.json
 ```
 
@@ -339,7 +353,10 @@ socket.error: [Errno 98] Address already in use
 ```bash
 fuser -k 8080/tcp
 ss -lntp | grep 8080        # must be empty
-ryu-manager <apps> > /tmp/ryu.log 2>&1 &
+ryu-manager --observe-links \
+  ryu.app.rest_qos ryu.app.rest_conf_switch ryu.app.qos_rest_router \
+  ryu.app.rest_topology ryu.app.ofctl_rest \
+  network6G_monitor.py ovs_utilization.py 2>&1 | tee -a /tmp/ryu.log &
 python setup_network.py --config prod.json   # restart wiped the baseline
 ```
 

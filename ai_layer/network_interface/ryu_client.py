@@ -104,6 +104,11 @@ class RyuClient:
             value = int(text, 10)
         return f"{value:016x}"
 
+    @staticmethod
+    def _decimal_dpid(dpid: str) -> int:
+        """/stats/* endpoints take a decimal dpid, unlike conf/router/qos."""
+        return int(RyuClient._normalize_dpid(dpid), 16)
+
     # ------------------------------------------------------------------ #
     #  GET endpoints – telemetry
     # ------------------------------------------------------------------ #
@@ -142,6 +147,11 @@ class RyuClient:
         """GET /latency/{src}/{dst}  →  latency/loss for a monitored pair."""
         return self._request("GET", f"/latency/{src}/{dst}")
 
+    def get_router_config(self, switch_id: str) -> list:
+        """GET /router/{switch_id}  →  addresses + static routes for one switch."""
+        dpid = self._normalize_dpid(switch_id)
+        return self._request("GET", f"/router/{dpid}")
+
     # ------------------------------------------------------------------ #
     #  POST endpoints – actions and setup
     # ------------------------------------------------------------------ #
@@ -154,13 +164,23 @@ class RyuClient:
             flow_rule: Dict with match/actions fields.
                        dpid is injected automatically.
         """
-        body = {"dpid": dpid, **flow_rule}
+        body = {"dpid": self._decimal_dpid(dpid), **flow_rule}
         return self._request("POST", "/stats/flowentry/add", json_body=body)
 
     def delete_flow(self, dpid: str, flow_rule: dict) -> dict:
         """POST /stats/flowentry/delete  →  remove a flow rule."""
-        body = {"dpid": dpid, **flow_rule}
+        body = {"dpid": self._decimal_dpid(dpid), **flow_rule}
         return self._request("POST", "/stats/flowentry/delete", json_body=body)
+
+    def delete_flow_strict(self, dpid: str, flow_rule: dict) -> dict:
+        """POST /stats/flowentry/delete_strict  →  remove exactly one flow.
+
+        Strict matching is required for route overrides: a non-strict delete on
+        ipv4_dst=<prefix> would also remove rest_router's own route flow for the
+        same prefix, which is the entry the override is supposed to fall back to.
+        """
+        body = {"dpid": self._decimal_dpid(dpid), **flow_rule}
+        return self._request("POST", "/stats/flowentry/delete_strict", json_body=body)
 
     def apply_qos(self, switch_id: str, qos_config: dict) -> dict:
         """POST /qos/queue/{switch_id}  →  configure a QoS queue.
@@ -212,6 +232,53 @@ class RyuClient:
     def reset_network(self) -> dict:
         """POST /network/reset  →  reset network state."""
         return self._request("POST", "/network/reset")
+
+
+# ---------------------------------------------------------------------- #
+#  Response-body inspection
+# ---------------------------------------------------------------------- #
+
+def command_failures(response) -> list:
+    """Details strings for every failed command in a Ryu REST response body.
+
+    rest_qos and qos_rest_router answer 200 OK even when the operation failed,
+    putting the verdict in the body:
+
+        [{"switch_id": "...", "command_result": [
+            {"result": "failure", "details": "Destination overlaps [route_id=2]"}]}]
+
+    Without inspecting this, a rejected write is indistinguishable from a
+    successful one, which is how failover/reroute silently no-op'd.
+
+    The shape of `command_result` varies by app and endpoint: qos_rest_router
+    returns a list of result dicts, while rest_qos returns a single dict (and
+    its `details` may itself be a nested dict, not a string). Anything that is
+    not a result dict is skipped rather than assumed.
+    """
+    entries = response if isinstance(response, list) else [response]
+    failures = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        results = entry.get("command_result")
+        if isinstance(results, dict):
+            results = [results]
+        elif not isinstance(results, list):
+            continue
+        for result in results:
+            if not isinstance(result, dict):
+                continue
+            if str(result.get("result", "")).lower() == "failure":
+                failures.append(str(result.get("details", "unspecified failure")))
+    return failures
+
+
+def raise_on_command_failure(response, context: str = "") -> None:
+    """Raise RyuResponseError when a 200 response reports a failed command."""
+    failures = command_failures(response)
+    if failures:
+        prefix = f"{context}: " if context else ""
+        raise RyuResponseError(prefix + "; ".join(failures))
 
 
 # ---------------------------------------------------------------------- #

@@ -71,8 +71,29 @@ ActionTranslator.execute(action_id)
 | `ai_layer/network_interface/telemetry_parser.py` | Converts raw JSON into 6D normalized state |
 | `ai_layer/network_interface/action_translator.py` | Maps action IDs to `RyuClient` calls; returns `ActionResult` |
 | `ai_layer/network_setup/network_initializer.py` | One-time routing + QoS baseline setup |
+| `ryu_apps/ovs_utilization.py` | Ryu app serving `GET /links/utilization`; owns the alias→DPID map (`name_map`) |
+| `ryu_apps/network6G_monitor.py` | Ryu app serving `GET /latency/{src}/{dst}` |
 | `ai_layer/agent/dqn_agent.py` | DQN with target network, epsilon-greedy, gradient clipping |
 | `ai_layer/utils/reward.py` | Decomposed operational reward (latency/loss penalties, throughput bonus, congestion threshold) |
+
+### Controller-side apps
+
+`ryu_apps/` holds the two custom Ryu apps the telemetry pipeline depends on.
+They are **not** importable Python for this project (they need `ryu` + `webob`,
+neither in `requirements.txt`) — they run inside the Mininet/Ryu container and
+must be copied to its `/root` before starting `ryu-manager`, which loads them by
+bare relative path:
+
+```bash
+docker cp ryu_apps/network6G_monitor.py <container>:/root/
+docker cp ryu_apps/ovs_utilization.py   <container>:/root/
+```
+
+Without them `/links/utilization` and `/latency/{src}/{dst}` do not exist, and
+every telemetry read fails — `TelemetryParser` reads nothing else, and
+`RyuClient.ping()` polls `/links/utilization` as its health check.
+`ovs_utilization.py:36` is the single source of the alias→DPID map
+(RAN=16, agg=32, core=48, sp1=64, sp2=65, lf1=80).
 
 ### State and action spaces
 
@@ -97,7 +118,7 @@ Episodes are **truncated** at `environment.episode.max_steps`; `terminated` is a
 - **Latency returns null**: add default routes in Mininet host namespaces (`mnexec -a <pid> ip route add default via <gw>`).
 - **qos_rest_router KeyError**: Mininet was started after Ryu — restart Ryu after Mininet is fully up.
 - **`Address already in use` on ryu-manager start**: a stale controller still holds port 8080. Clear it before restarting: `fuser -k 8080/tcp` (or `kill $(lsof -t -i:8080)`), confirm with `ss -lntp | grep 8080`, then start `ryu-manager`. A Ryu restart also wipes the routing/QoS baseline — re-run `setup_network.py` (training does this automatically on reconnect).
-- **Controller dies mid-training**: `train.py` saves `models/train_state.pth` every episode and waits `reconnect_max_wait_seconds` (default 180s) for the controller to return, re-applying startup setup before continuing. If it stays down, resume with `python train.py --config prod.json --resume models/train_state.pth`. Capture the cause by running the controller as `ryu-manager <apps> > /tmp/ryu.log 2>&1`.
+- **Controller dies mid-training**: `train.py` saves `models/train_state.pth` every episode and waits `reconnect_max_wait_seconds` (default 180s) for the controller to return, re-applying startup setup before continuing. If it stays down, resume with `python train.py --config prod.json --resume models/train_state.pth`. Capture the cause by running the controller with its log teed to a file — see the full invocation in `docs/RUNNING_GUIDE.md` §3 (use `tee -a`; bare `tee` truncates the log on every restart).
 - **Long training killed on disconnect**: run inside `tmux`/`screen` or use `nohup`.
 - **Mininet `py` commands**: Mininet uses Python 2.7; use `execfile('/root/script.py', {'net': net})` instead of `exec(open(...))`.
 

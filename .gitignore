@@ -33,8 +33,26 @@ Thumbs.db
 *.log
 
 # RL outputs and artifacts
-/Old_models/*.pth
+/Old_models/
 /checkpoints/
 /runs/
 /logs/*.json
 /logs/*.log
+/logs/*.txt
+
+# Captured at setup time; MACs change on every Mininet restart
+/models/next_hops.json
+
+# Vendored CPython source drops (not part of this project)
+/Python-3.10.13.tgz*
+/Python-3.10.13/
+/Python-3.10.11/
+
+# Shell-redirect artifacts from botched mininet / ryu-manager invocations:
+# each argument became a zero-length file instead of being passed as an argument.
+/--topo
+/--controller=*
+/--switch=*
+/exit
+/ryu.app.*
+/ryu.topology.*

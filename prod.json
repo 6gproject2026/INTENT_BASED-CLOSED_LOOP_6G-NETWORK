@@ -18,6 +18,16 @@
       "backup_link_capacity_mbps": 10.0,
       "stabilization_delay_seconds": 1.0,
       "num_ports": 3,
+      "route_override": {
+        "table_id": 1,
+        "priority": 100,
+        "cookie": 41342,
+        "next_hop_map_path": "models/next_hops.json",
+        "dump_flows_command": [
+          "./scripts/mn.sh", "sw", "ovs-ofctl", "-O", "OpenFlow13",
+          "dump-flows", "{bridge}"
+        ]
+      },
       "topology": {
         "main_path": ["core", "sp1", "lf1"],
         "backup_path": ["core", "sp2", "lf1"]
@@ -122,6 +132,7 @@
     "startup_setup": {
       "enabled": true,
       "continue_on_error": false,
+      "strict_conflicts": false,
       "ovsdb_addr": "tcp:127.0.0.1:6632",
       "routing": {
         "node_order": [

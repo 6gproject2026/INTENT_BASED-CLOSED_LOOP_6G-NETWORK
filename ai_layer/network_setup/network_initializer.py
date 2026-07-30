@@ -2,9 +2,28 @@ import logging
 from dataclasses import dataclass, field
 from typing import List
 
-from ai_layer.network_interface.ryu_client import RyuClient
+from ai_layer.network_interface.ryu_client import (
+    RyuClient,
+    RyuResponseError,
+    command_failures,
+)
 
 logger = logging.getLogger(__name__)
+
+# Re-applying setup against a configured controller is routine: a plain re-run
+# and train.py's reconnect path both replay every step. rest_router reports
+# those replays as body-level failures — "Address overlaps [address_id=1]",
+# "Destination overlaps [route_id=2]" — which mean the desired state is already
+# present, not that the step failed. They are tracked separately so that real
+# failures stop being counted as successes without making setup non-idempotent.
+IDEMPOTENT_CONFLICT_MARKERS = ("overlaps",)
+
+
+def _is_idempotent_conflict(details: List[str]) -> bool:
+    return bool(details) and all(
+        any(marker in detail.lower() for marker in IDEMPOTENT_CONFLICT_MARKERS)
+        for detail in details
+    )
 
 
 @dataclass
@@ -15,6 +34,7 @@ class SetupSummary:
     qos_steps: int = 0
     successes: int = 0
     failures: int = 0
+    already_configured: int = 0
     errors: List[str] = field(default_factory=list)
 
     def as_dict(self) -> dict:
@@ -25,6 +45,7 @@ class SetupSummary:
             "qos_steps": self.qos_steps,
             "successes": self.successes,
             "failures": self.failures,
+            "already_configured": self.already_configured,
             "errors": self.errors,
         }
 
@@ -37,6 +58,8 @@ class NetworkInitializer:
         self.startup_cfg = env_cfg.get("startup_setup", {})
         self.debug_cfg = config.get("debugging", {})
         self.continue_on_error = bool(self.startup_cfg.get("continue_on_error", False))
+        # When True, an idempotent conflict is a hard failure instead of a no-op.
+        self.strict_conflicts = bool(self.startup_cfg.get("strict_conflicts", False))
         self.dry_run = bool(self.debug_cfg.get("dry_run_setup", False))
         self.enabled = bool(self.startup_cfg.get("enabled", False))
         self.client = RyuClient(env_cfg.get("ryu_controller", {}))
@@ -76,7 +99,23 @@ class NetworkInitializer:
             return
 
         try:
-            fn()
+            response = fn()
+            # rest_qos and qos_rest_router answer 200 OK with the real verdict in
+            # the body, so an unchecked call cannot distinguish applied from
+            # rejected. This is what let failover/reroute no-op silently.
+            details = command_failures(response)
+
+            if details and not self.strict_conflicts and _is_idempotent_conflict(details):
+                logger.info(
+                    "%s: %s (already configured: %s)", phase, label, "; ".join(details)
+                )
+                self.summary.already_configured += 1
+                self.summary.successes += 1
+                return
+
+            if details:
+                raise RyuResponseError("; ".join(details))
+
             logger.info("%s: %s", phase, label)
             self.summary.successes += 1
         except Exception as exc:
