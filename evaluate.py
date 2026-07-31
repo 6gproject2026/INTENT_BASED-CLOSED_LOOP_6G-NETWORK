@@ -269,40 +269,57 @@ def main():
 
     baseline_results = []
     try:
-        dqn_metrics = run_policy(
-            env=env,
-            policy_name="dqn",
-            num_episodes=num_episodes,
-            action_fn=lambda s: agent.select_action(s),
-            base_seed=seed,
-            congestion_threshold=congestion_threshold,
-            render=render,
-        )
+        # One env per policy. SDNEnv carries failover_active across resets and
+        # its ActionTranslator tracks installed overrides in memory, so a shared
+        # instance would hand the dqn run's final path state to the random run,
+        # and the random run's to do_nothing. Each policy must start from the
+        # same initial conditions for the comparison to mean anything.
+        dqn_env = build_environment(config)
+        try:
+            dqn_metrics = run_policy(
+                env=dqn_env,
+                policy_name="dqn",
+                num_episodes=num_episodes,
+                action_fn=lambda s: agent.select_action(s),
+                base_seed=seed,
+                congestion_threshold=congestion_threshold,
+                render=render,
+            )
+        finally:
+            dqn_env.close()
 
         baseline_cfg = eval_cfg.get("baseline_policies", [])
         for baseline in baseline_cfg:
             name = str(baseline.get("name", "")).lower()
             if name == "random":
-                result = run_policy(
-                    env=env,
-                    policy_name="random",
-                    num_episodes=num_episodes,
-                    action_fn=lambda _s: env.action_space.sample(),
-                    base_seed=seed,
-                    congestion_threshold=congestion_threshold,
-                    render=False,
-                )
+                rand_env = build_environment(config)
+                try:
+                    result = run_policy(
+                        env=rand_env,
+                        policy_name="random",
+                        num_episodes=num_episodes,
+                        action_fn=lambda _s: rand_env.action_space.sample(),
+                        base_seed=seed,
+                        congestion_threshold=congestion_threshold,
+                        render=False,
+                    )
+                finally:
+                    rand_env.close()
                 baseline_results.append(result)
             elif name == "do_nothing":
-                result = run_policy(
-                    env=env,
-                    policy_name="do_nothing",
-                    num_episodes=num_episodes,
-                    action_fn=lambda _s: 0,
-                    base_seed=seed,
-                    congestion_threshold=congestion_threshold,
-                    render=False,
-                )
+                nop_env = build_environment(config)
+                try:
+                    result = run_policy(
+                        env=nop_env,
+                        policy_name="do_nothing",
+                        num_episodes=num_episodes,
+                        action_fn=lambda _s: 0,
+                        base_seed=seed,
+                        congestion_threshold=congestion_threshold,
+                        render=False,
+                    )
+                finally:
+                    nop_env.close()
                 baseline_results.append(result)
     except RyuConnectionError as exc:
         # Evaluation is short and its numbers are only meaningful over a full run,

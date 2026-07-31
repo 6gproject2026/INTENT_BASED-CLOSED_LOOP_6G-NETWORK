@@ -174,6 +174,38 @@ class ActionTranslator:
             "no_op": False,
         }
 
+    def reset_overrides(self) -> dict:
+        """Remove every installed route override and clear tracked state.
+
+        Called on episode reset so an episode that ended mid-failover cannot
+        leave the override flow installed while the environment reports
+        failover_active=False. delete_strict on an absent flow is a no-op, so
+        this is safe to call unconditionally.
+        """
+        cleared, errors = [], []
+        for cfg in self._actions_cfg.values():
+            target = cfg.get("target", {})
+            destination = target.get("route", {}).get("destination")
+            if not destination:
+                continue
+            switch_id = str(target.get("switch_dpid", self.default_switch))
+            key = (switch_id, destination)
+            if key in cleared:
+                continue
+            try:
+                self.client.delete_flow_strict(
+                    switch_id, self._override_flow_key(destination)
+                )
+                cleared.append(key)
+            except Exception as exc:  # noqa: BLE001 - reported, never fatal
+                errors.append(f"{switch_id} {destination}: {exc}")
+
+        self._override_active = {}
+        return {
+            "cleared": [f"{sid}:{dst}" for sid, dst in cleared],
+            "errors": errors,
+        }
+
     def _override_flow_key(self, destination: str) -> dict:
         """Flow identity shared by add and delete_strict.
 

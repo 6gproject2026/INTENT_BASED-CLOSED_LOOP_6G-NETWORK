@@ -4,6 +4,7 @@ import json
 from ai_layer.network_setup import NetworkInitializer
 from ai_layer.network_setup.next_hop_capture import capture_next_hops
 from ai_layer.network_interface.ryu_client import RyuClient
+from ai_layer.network_interface.action_translator import ActionTranslator
 
 
 def parse_args():
@@ -42,37 +43,13 @@ def clear_route_overrides(config: dict) -> dict:
 
     delete_strict on a flow that does not exist is a no-op on OVS, so this is
     safe on a clean network.
+
+    Delegates to ActionTranslator so the override's table/priority/cookie are
+    defined in exactly one place — a mismatch here would silently fail to
+    delete the flow the translator installs.
     """
-    network = config["environment"]["network"]
-    override = network.get("route_override", {})
     client = RyuClient(config["environment"]["ryu_controller"])
-
-    cleared, errors = [], []
-    for action in config["environment"]["action_space"]["actions"].values():
-        target = action.get("target", {})
-        destination = target.get("route", {}).get("destination")
-        if not destination:
-            continue
-        switch_id = str(target.get("switch_dpid", network["switch_dpid"]))
-        key = (switch_id, destination)
-        if key in cleared:
-            continue
-        flow = {
-            "table_id": int(override.get("table_id", 1)),
-            "priority": int(override.get("priority", 100)),
-            "cookie": int(override.get("cookie", 0xA17E)),
-            "match": {"eth_type": 0x0800, "ipv4_dst": destination},
-        }
-        try:
-            client.delete_flow_strict(switch_id, flow)
-            cleared.append(key)
-        except Exception as exc:  # noqa: BLE001 - reported, never fatal
-            errors.append(f"{switch_id} {destination}: {exc}")
-
-    return {
-        "cleared": [f"{sid}:{dst}" for sid, dst in cleared],
-        "errors": errors,
-    }
+    return ActionTranslator(client, config).reset_overrides()
 
 
 def main():

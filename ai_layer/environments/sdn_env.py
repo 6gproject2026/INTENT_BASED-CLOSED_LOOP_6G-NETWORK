@@ -91,8 +91,24 @@ class SDNEnv(gym.Env):
         self._current_step = 0
         self._last_action = None
 
+        # Episodes must start from a known path. Without this, a failover left
+        # active by the previous episode silently becomes the next episode's
+        # initial condition, and with a shared env one policy's final state
+        # becomes the next policy's starting state.
+        #
+        # Clearing the flag alone is not enough: the override flow lives on the
+        # switch, owned by ActionTranslator, so the fabric is reset too --
+        # otherwise the env would report failover_active=False while the
+        # override is still forwarding traffic down the backup path.
         if options and "failover_active" in options:
+            # Deliberate mid-failover start. The caller owns fabric/belief
+            # agreement here; nothing is issued to the switch.
             self.failover_active = bool(options["failover_active"])
+        else:
+            result = self.translator.reset_overrides()
+            if result["errors"]:
+                logger.warning("Route override reset incomplete: %s", result["errors"])
+            self.failover_active = False
 
         if self.call_network_reset_on_reset:
             try:

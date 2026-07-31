@@ -42,7 +42,7 @@
       }
     },
     "monitoring": {
-      "latency_min_ms": 10.0,
+      "latency_min_ms": 0.0,
       "latency_max_ms": 80.0,
       "packet_loss_max_percent": 5.0,
       "main_pair": {
