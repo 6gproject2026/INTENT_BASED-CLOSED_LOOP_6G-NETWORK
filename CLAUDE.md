@@ -13,6 +13,11 @@ python setup_network.py --config prod.json
 python setup_network.py --config prod.json --dry-run          # preview API calls only
 python setup_network.py --config prod.json --continue-on-error
 
+# Next-hop capture — SEPARATE command, run only AFTER traffic is flowing and a
+# cross-fabric ping succeeds. qos_rest_router writes the eth_src/eth_dst/output
+# flows this reads only once ARP resolves; on a quiet network it exits 1.
+python capture_next_hops.py --config prod.json
+
 # Smoke test — hits Ryu telemetry, action, and env APIs; runs 3 env steps
 python clint_test.py
 

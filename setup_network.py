@@ -2,7 +2,6 @@ import argparse
 import json
 
 from ai_layer.network_setup import NetworkInitializer
-from ai_layer.network_setup.next_hop_capture import capture_next_hops
 from ai_layer.network_interface.ryu_client import RyuClient
 from ai_layer.network_interface.action_translator import ActionTranslator
 
@@ -19,16 +18,6 @@ def parse_args():
         "--dry-run",
         action="store_true",
         help="Print planned setup steps without calling APIs",
-    )
-    parser.add_argument(
-        "--capture-next-hops",
-        action="store_true",
-        help="Record per-gateway L2 rewrites for route-override actions",
-    )
-    parser.add_argument(
-        "--next-hop-map",
-        default=None,
-        help="Where to write the next-hop map (default: config value)",
     )
     return parser.parse_args()
 
@@ -74,13 +63,15 @@ def main():
         print("\nRoute override reset:")
         print(json.dumps(clear_route_overrides(config), indent=2))
 
-    if args.capture_next_hops and not args.dry_run:
-        # Must run after routing setup: the rewrites are read back out of the
-        # flows rest_router installs, which is also what makes them correct —
-        # they are the MACs the controller itself resolved via ARP.
-        result = capture_next_hops(config, output_path=args.next_hop_map)
-        print("\nNext-hop capture:")
-        print(json.dumps(result, indent=2))
+    if not args.dry_run:
+        # Capture is deliberately a separate command: setup must run on a quiet
+        # network, but the next-hop rewrites only exist once ARP has resolved,
+        # which needs live traffic. Bundling them produced an empty map.
+        print(
+            f"\nNext: start traffic, verify a cross-fabric ping, then run\n"
+            f"    python capture_next_hops.py --config {args.config}\n"
+            "Route-override actions (failover/reroute) fail until that map exists."
+        )
 
 
 if __name__ == "__main__":

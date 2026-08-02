@@ -88,15 +88,30 @@ curl http://172.17.0.2:8080/stats/switches
 curl http://172.17.0.2:8080/links/utilization
 curl http://172.17.0.2:8080/latency/G6_D1/URLLC
 
-# 5. One-time network setup (routing + baseline QoS):
+# 5. One-time network setup (routing + baseline QoS). Run on a QUIET network:
 python setup_network.py --config prod.json
 
-# 6. Smoke test the AI layer end-to-end:
+# 6. Start traffic (inside Mininet — see traffic_runner.py, or iperf via scripts/mn.sh).
+
+# 7. Verify ARP resolved across the fabric. This MUST succeed before step 8:
+./scripts/mn.sh host G6_D1 ping -c 3 20.0.0.1
+
+# 8. Capture next-hop L2 rewrites. Requires steps 6-7: qos_rest_router installs
+#    routes as packet-in stubs and only writes the eth_src/eth_dst/output flow
+#    once ARP resolves. On a quiet network this captures nothing and exits 1.
+python capture_next_hops.py --config prod.json
+
+# 9. Smoke test the AI layer end-to-end:
 python clint_test.py
 
-# 7. Train:
+# 10. Train:
 python train.py --config prod.json --model-path models/dqn_model_live.pth
 ```
+
+**Steps 5→8 order is not optional.** Setup must run on a quiet network; capture
+must run on a busy one. Skipping step 8 leaves `models/next_hops.json` absent and
+every `failover` action fails at runtime with
+`No next-hop rewrite captured for 48:14.0.0.2`.
 
 **Always run long training inside `tmux` or `screen`** — an SSH disconnect kills it otherwise.
 
@@ -120,10 +135,14 @@ python setup_network.py --config prod.json
 ## 4. Command reference
 
 ```bash
-# Setup
+# Setup (run on a QUIET network)
 python setup_network.py --config prod.json
 python setup_network.py --config prod.json --dry-run           # preview API calls only
 python setup_network.py --config prod.json --continue-on-error
+
+# Next-hop capture (run AFTER traffic is flowing and a cross-fabric ping works)
+python capture_next_hops.py --config prod.json
+python capture_next_hops.py --config prod.json --output models/next_hops.json
 
 # Smoke tests
 python clint_test.py                    # telemetry + action + env, 3 env steps
@@ -456,6 +475,31 @@ contain a **Windows** venv (`venv/Scripts/`) that is unusable from Linux/WSL.
 
 **Fix:** `source venv/bin/activate && pip install -r requirements.txt`. Confirm with
 `python -c "import torch; print(torch.__version__)"` → `2.11.0`.
+
+### 8.13 `diagnose_actions.py` verdict table is unreliable — KNOWN BUG, not yet fixed
+
+**Symptom:** the "did any link utilization move?" table reports `YES` for **every**
+action, including `0 (do_nothing)`, which issues no API call at all. Readings also
+appear one sample behind the action: after `failover` the *main* path still reads
+higher, and after `reroute` the *backup* path reads higher — inverted from what
+each action actually does.
+
+**Cause:** `ovs_utilization.py` samples port stats at 1 Hz, and the script reads
+`/links/utilization` before the new rate has propagated. A `do_nothing` step then
+picks up the *previous* action's traffic shift and attributes it to itself.
+
+**Fix needed (not done):** add a settle delay before reading utilization (≥ 2-3
+sampling intervals), and treat `do_nothing` as a control — if it registers
+movement above the threshold, the run's noise floor is too high to attribute
+causation and the whole table should be reported as inconclusive.
+
+**Meanwhile:** verify route actions at the flow-table level instead, which is
+unambiguous:
+```bash
+./scripts/mn.sh sw ovs-ofctl -O OpenFlow13 dump-flows core | grep 'nw_dst=20.0.0.0/24'
+```
+`cookie=0xa17e priority=100 → output:3` present means failover is active; the base
+`cookie=0x20000` packet counter freezes while it is, and resumes after `reroute`.
 
 ---
 

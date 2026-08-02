@@ -246,7 +246,7 @@ class ActionTranslator:
         if not hop:
             raise RuntimeError(
                 f"No next-hop rewrite captured for {key}. Run "
-                f"'python setup_network.py --config <cfg> --capture-next-hops'. "
+                f"Start traffic, then run 'python capture_next_hops.py'. "
                 f"Map path: {self._next_hop_path}"
             )
         return hop
